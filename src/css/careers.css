@@ -1,0 +1,9 @@
+.titles{ text-align: center;
+font-size: 20px;}
+.clear{clear: both;}
+.divs div{float: left;
+width: 20%;
+font-size: 18px;
+text-align: center;
+border-right: 1px solid #CCCCCC;}
+
