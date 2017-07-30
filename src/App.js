@@ -4,11 +4,12 @@ import logo from './logo.svg';
 import Cases from './js/Cases';
 import Cases2 from './js/Cases2';
 import Careers from './js/Careers';
+import Contact from './js/Contact';
 import './css/admin.css';
-import './css/pintuer.css';
 import './css/css.css';
 import './css/cases.css';
 import './css/careers.css';
+import './css/contact.css';
 class App extends Component {
 	    componentDidMount=function () {
 	  $(".leftnav h2").click(function(){
@@ -35,6 +36,11 @@ class App extends Component {
     	$(".careers").show()
     	$(".bread li:nth-child(2)").text("人才招聘")
   })
+        $("#contact").click(function(){
+    	$(".admin").children().hide()
+    	$(".contact").show()
+    	$(".bread li:nth-child(2)").text("联系")
+  })
 	    }
   render() {
     return (
@@ -60,6 +66,7 @@ class App extends Component {
     <li id="cases"><a><span className="icon-caret-right"></span>案例一</a></li>   
     <li id="cases2"><a><span className="icon-caret-right"></span>案例二</a></li>  
     <li id="careers"><a><span className="icon-caret-right"></span>人才招聘</a></li>   
+    <li id="contact"><a><span className="icon-caret-right"></span>联系</a></li>   
   </ul>  
 </div>
 <ul className="bread">
@@ -70,6 +77,7 @@ class App extends Component {
 <div className="cases"><Cases></Cases></div>
 <div className="cases2"><Cases2></Cases2></div>
 <div className="careers"><Careers></Careers></div>
+<div className="contact"><Contact></Contact></div>
 <p>啊实打实的</p>
 </div>
       </div>

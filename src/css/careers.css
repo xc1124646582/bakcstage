@@ -1,9 +1,28 @@
+*{margin: 0;padding: 0;}
 .titles{ text-align: center;
 font-size: 20px;}
 .clear{clear: both;}
 .divs div{float: left;
-width: 20%;
-font-size: 18px;
-text-align: center;
+width: 18%;
+font-size: 14px;
+font-family: "微软雅黑";
+padding: 5px;
+line-height: 24px;
+border-top: 1px solid #EEEEEE;
 border-right: 1px solid #CCCCCC;}
-
+.divs div p{ margin-top: 6px;}
+.divs div:nth-child(1){text-align: center;}
+.divs div:nth-child(2){text-align: center;}
+.divs div input{ margin-top: 9px;}
+.divs-top div{font-size: 18px;
+text-align: center;}
+.btnbox button{padding-left: 8px;
+padding-right: 8px;}
+.btn{ box-sizing: border-box;
+padding-top: 34px;
+padding-left: 230px;}
+.btn button{margin-left: 90px;
+padding: 8px 18px 8px 18px;}
+.textbox{ display: none;
+margin-bottom: 20px;}
+.clearwork{ padding: 9px 19px 9px 19px;}

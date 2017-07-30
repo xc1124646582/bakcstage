@@ -87,7 +87,7 @@ class Cases extends Component {
 				contentType:false,
 				processData:false,
 				success:function(e){	
-					alert("哈哈")	
+				console.log(e)
       		},
       		error:function(){
       			console.log("666")
@@ -97,12 +97,20 @@ class Cases extends Component {
     
         fn=function(event){
         	var aa=event.target
+        	var imgen=null
 				var  cid=aa.parentElement.firstElementChild.innerHTML
+			for(var i in this.state.lis){
+						if(this.state.lis[i].cid==cid){
+							imgen=this.state.lis[i].src
+						}
+				}
+			 var imgsrc=imgen.split("/")[imgen.split("/").length-1]
+			 console.log(imgsrc)
 				{/* 删除*/}
 				$.ajax({
 				type:"post",
 				url:"http://localhost:8100/cebest/dlcases1",
-				data:{"cid":cid},
+				data:{"cid":cid,"imagesww":"public/images/"+imgsrc},
 				success:function(e){				
 					alert(e)
 					for(var i in this.state.lis){
