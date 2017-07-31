@@ -17,52 +17,52 @@ import './css/careers2.css';
 import './css/chinese2.css';
 import './css/gengduo.css';
 class App extends Component {
-	    componentDidMount=function () {
+	componentDidMount=function () {
 	  $(".leftnav h2").click(function(){
-	  $(this).next().slideToggle(200);	
-	  $(this).toggleClass("on"); 
-  })
-  $(".leftnav ul li a").click(function(){
-	    $("#a_leader_txt").text($(this).text());
-  		$(".leftnav ul li a").removeClass("on");
-		$(this).addClass("on");
-  })
+  	  $(this).next().slideToggle(200);	
+  	  $(this).toggleClass("on"); 
+    })
+    $(".leftnav ul li a").click(function(){
+  	    $("#a_leader_txt").text($(this).text());
+    		$(".leftnav ul li a").removeClass("on");
+  		$(this).addClass("on");
+    })
     $("#cases").click(function(){
     	$(".admin").children().hide()
     	$(".cases").show()
     	$(".bread li:nth-child(2)").text("案例一")
-  })
-        $("#cases2").click(function(){
+    })
+    $("#cases2").click(function(){
     	$(".admin").children().hide()
     	$(".cases2").show()
     	$(".bread li:nth-child(2)").text("案例二")
-  })
-      $("#careers").click(function(){
+    })
+     $("#careers").click(function(){
     	$(".admin").children().hide()
     	$(".careers").show()
     	$(".bread li:nth-child(2)").text("人才招聘")
-  })
-        $("#contact").click(function(){
+    })
+    $("#contact").click(function(){
     	$(".admin").children().hide()
     	$(".contact").show()
     	$(".bread li:nth-child(2)").text("联系")
-  })
-        $("#careers2").click(function(){
+    })
+    $("#careers2").click(function(){
     	$(".admin").children().hide()
     	$(".careers2").show()
     	$(".bread li:nth-child(2)").text("人才二")
-  })
-        $("#chinese2").click(function(){
+    })
+    $("#chinese2").click(function(){
     	$(".admin").children().hide()
     	$(".chinese2").show()
     	$(".bread li:nth-child(2)").text("中企云")
-  })
-        $("#gengduo").click(function(){
+    })
+    $("#gengduo").click(function(){
     	$(".admin").children().hide()
     	$(".gengduo").show()
     	$(".bread li:nth-child(2)").text("更多服务")
-  })
-	    }
+    })
+	}
   render() {
     return (
       <div className="App">
@@ -98,14 +98,28 @@ class App extends Component {
   <li>网站信息</li>
 </ul>
 <div className="admin">
-<div className="cases"><Cases></Cases></div>
-<div className="cases2"><Cases2></Cases2></div>
-<div className="careers"><Careers></Careers></div>
-<div className="contact"><Contact></Contact></div>
-<div className="careers2"><Careers2></Careers2></div>
-<div className="chinese2"><Chinese2></Chinese2></div>
-<div className="gengduo"><Gengduo></Gengduo></div>
-<p>啊实打实的</p>
+  <div className="cases">
+    <Cases></Cases>
+  </div>
+  <div className="cases2">
+    <Cases2></Cases2>
+  </div>
+  <div className="careers">
+    <Careers></Careers>
+  </div>
+  <div className="contact">
+    <Contact></Contact>
+  </div>
+  <div className="careers2">
+    <Careers2></Careers2>
+  </div>
+  <div className="chinese2">
+    <Chinese2></Chinese2>
+  </div>
+  <div className="gengduo">
+    <Gengduo></Gengduo>
+  </div>
+  <p>啊实打实的</p>
 </div>
       </div>
     );

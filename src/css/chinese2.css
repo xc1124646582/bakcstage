@@ -1,48 +1,75 @@
-.chin2fix{ width: 100%;
-height: 100%;
-position: fixed;
-display: none;
-top: 0;
-left: 0;
-background-color: rgba(0,0,0,0.5);}
-.chin2fix-box{ width: 360px;
-background: white;
-box-sizing: border-box;
-padding: 2%;
-position: absolute;
-border: 1px solid #CCCCCC;
-top: 50%;
-left: 50%;
-margin-left: -180px;
-margin-top: -170px;
-height: 340px;}
-.chin2fix-box p{ margin-top: 13px;}
-.chin2fix-box input{ 
-	margin-left: 12px;
-width: 80%;
-height: 26px;}
-.chin2fix-box button{margin-left: 60px;
-padding: 9px 18px 9px 18px;}
-.homes{ width: 100%;
-height: 100%;
-position: fixed;
-display: none;
-top: 0;
-left: 0;
-background: rgba(0,0,0,0.5);}
-.homes div{ width: 280px;
-background: white;
-border: 1px solid #CCCCCC;
-position: absolute;
-top: 50%;
-left: 50%;
-box-sizing: border-box;
-padding: 2%;
-margin-top: -100px;
-margin-left: -140px;
-height: 200px;}
-.homes div p{ height: 50px;
-line-height: 50px;}
-.pp{height: 40px;}
+.chin2fix {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	display: none;
+	top: 0;
+	left: 0;
+	background-color: rgba(0, 0, 0, 0.5);
+}
 
-.homes div p button{ padding: 5px 18px 5px 18px;}
+.chin2fix-box {
+	width: 360px;
+	background: white;
+	box-sizing: border-box;
+	padding: 2%;
+	position: absolute;
+	border: 1px solid #CCCCCC;
+	top: 50%;
+	left: 50%;
+	margin-left: -180px;
+	margin-top: -170px;
+	height: 340px;
+}
+
+.chin2fix-box p {
+	margin-top: 13px;
+}
+
+.chin2fix-box input {
+	margin-left: 12px;
+	width: 80%;
+	height: 26px;
+}
+
+.chin2fix-box button {
+	margin-left: 60px;
+	padding: 9px 18px 9px 18px;
+}
+
+.homes {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	display: none;
+	top: 0;
+	left: 0;
+	background: rgba(0, 0, 0, 0.5);
+}
+
+.homes div {
+	width: 280px;
+	background: white;
+	border: 1px solid #CCCCCC;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	box-sizing: border-box;
+	padding: 2%;
+	margin-top: -100px;
+	margin-left: -140px;
+	height: 200px;
+}
+
+.homes div p {
+	height: 50px;
+	line-height: 50px;
+}
+
+.pp {
+	height: 40px;
+}
+
+.homes div p button {
+	padding: 5px 18px 5px 18px;
+}

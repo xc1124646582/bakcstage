@@ -1,131 +1,136 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import $ from 'jquery';
+
 class Careers2 extends Component {
-	    constructor(){
-        super();
-        this.state={
-            careers2:[],
-            id:null,
-            title1:null,
-            title2:null,
-            con:null
-        }
-    };
-	    componentDidMount=function () {
-	    	$.ajax({
-				type:"get",
-				url:"http://localhost:8100/cebest/careers2",
-				async:true,
-				contentType:false,
-				processData:false,
-				success:function(e){	
-					console.log(e)
+	constructor() {
+		super();
+		this.state = {
+			careers2: [],
+			id: null,
+			title1: null,
+			title2: null,
+			con: null
+		}
+	};
+	componentDidMount = function() {
+		$.ajax({
+			type: "get",
+			url: "http://localhost:8100/cebest/careers2",
+			async: true,
+			contentType: false,
+			processData: false,
+			success: function(e) {
+				console.log(e)
 				this.setState({
-					careers2:e
+					careers2: e
 				})
 				console.log(this.state.careers2)
-      		}.bind(this),
-      		error:function(){
-      			console.log("666")
-      		}
-			});	
-	    }
-    setFiles=function(element){
-    	console.log(element)
-    	var files=[]
-    	files=element.files[0] 
-		  var fd=new FormData();  //表单处理数据的方法
-				fd.append('uploadedFile',files)
-				//用append方法以键值对的方式保存
-		        console.log(fd)
-	        $.ajax({
-				type:"post",
-				url:"http://localhost:8100/cebest/incases1",
-				async:true,
-				data:fd,
-				contentType:false,
-				processData:false,
-				success:function(e){	
+			}.bind(this),
+			error: function() {
+				console.log("666")
+			}
+		});
+	}
+	setFiles = function(element) {
+		console.log(element)
+		var files = []
+		files = element.files[0]
+		var fd = new FormData(); //表单处理数据的方法
+		fd.append('uploadedFile', files)
+		//用append方法以键值对的方式保存
+		console.log(fd)
+		$.ajax({
+			type: "post",
+			url: "http://localhost:8100/cebest/incases1",
+			async: true,
+			data: fd,
+			contentType: false,
+			processData: false,
+			success: function(e) {
 				console.log(e)
-      		},
-      		error:function(){
-      			console.log("666")
-      		}
-			});
-			
-			$.ajax({
-				type:"post",
-				url:"http://localhost:8100/cebest/upcareers2img",
-				data:{"id":this.state.id},
-				success:function(e){				
-      		}.bind(this),
-      		error:function(){
-      			console.log("666")
-      		}
-			});	
-			
-			
-		  }.bind(this)
+			},
+			error: function() {
+				console.log("666")
+			}
+		});
 
+		$.ajax({
+			type: "post",
+			url: "http://localhost:8100/cebest/upcareers2img",
+			data: {
+				"id": this.state.id
+			},
+			success: function(e) {}.bind(this),
+			error: function() {
+				console.log("666")
+			}
+		});
 
-faser=function(event){
-	$(".car2fix").css("display","block")
-    	var aa=event.target
-		var  id=aa.parentElement.firstElementChild.innerHTML
+	}.bind(this)
+
+	faser = function(event) {
+		$(".car2fix").css("display", "block")
+		var aa = event.target
+		var id = aa.parentElement.firstElementChild.innerHTML
 		this.setState({
-			id:id
+			id: id
 		})
-}.bind(this)
-clearfn=function(){
-	$(".car2fix").css("display","none")
-}
-carups=function(){
-	var title1=$("#title1").val()
-	var title2=$("#title2").val()
-	var con=$("#con").val()
-	if($("#title1").val()==""){
-		for(var i=0;i<this.state.careers2.length;i++){
-			if(this.state.careers2[i].id==this.state.id){
-			title1=this.state.careers2[i].title1
+	}.bind(this)
+	clearfn = function() {
+		$(".car2fix").css("display", "none")
+	}
+	carups = function() {
+		var title1 = $("#title1").val()
+		var title2 = $("#title2").val()
+		var con = $("#con").val()
+		if($("#title1").val() == "") {
+			for(var i = 0; i < this.state.careers2.length; i++) {
+				if(this.state.careers2[i].id == this.state.id) {
+					title1 = this.state.careers2[i].title1
+				}
 			}
 		}
-	}
-	if($("#title2").val()==""){
-		for(var i=0;i<this.state.careers2.length;i++){
-			if(this.state.careers2[i].id==this.state.id){
-			title2=this.state.careers2[i].title2
+		if($("#title2").val() == "") {
+			for(var i = 0; i < this.state.careers2.length; i++) {
+				if(this.state.careers2[i].id == this.state.id) {
+					title2 = this.state.careers2[i].title2
+				}
 			}
 		}
-	}
-	
-		if($("#con").val()==""){
-		for(var i=0;i<this.state.careers2.length;i++){
-			if(this.state.careers2[i].id==this.state.id){
-			con=this.state.careers2[i].con
+
+		if($("#con").val() == "") {
+			for(var i = 0; i < this.state.careers2.length; i++) {
+				if(this.state.careers2[i].id == this.state.id) {
+					con = this.state.careers2[i].con
+				}
 			}
 		}
-	}
-	    		$.ajax({
-				type:"post",
-				url:"http://localhost:8100/cebest/upcareers2",
-				data:{"id":this.state.id,"title1":title1,"title2":title2,"con":con},
-				success:function(e){	
+		$.ajax({
+			type: "post",
+			url: "http://localhost:8100/cebest/upcareers2",
+			data: {
+				"id": this.state.id,
+				"title1": title1,
+				"title2": title2,
+				"con": con
+			},
+			success: function(e) {
 				this.setState({
-					careers2:e
+					careers2: e
 				})
 				$("#title1").val("")
 				$("#title2").val("")
 				$("#con").val("")
-				$(".car2fix").css("display","none")
-      		}.bind(this),
-      		error:function(){
-      			console.log("666")
-      		}
-			});	
-}.bind(this)
-  render() {
-    return (
-<div className="careers2">
+				$(".car2fix").css("display", "none")
+			}.bind(this),
+			error: function() {
+				console.log("666")
+			}
+		});
+	}.bind(this)
+	render() {
+		return(
+			<div className="careers2">
 <p className="titles"></p>
 <div className="careers2-box">
 <ul>{this.state.careers2.map(function(v,i){
@@ -154,8 +159,8 @@ carups=function(){
         	</div>			
 </div>
       </div>
-    );
-  }
+		);
+	}
 }
 
 export default Careers2;

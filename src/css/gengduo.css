@@ -1,10 +1,12 @@
-.gengduo-box>ul>li>p{ float: left;
-height: 100;
-text-align: center;
-width: 180px;}
-.gengduo-box>ul>li{
+.gengduo-box>ul>li>p {
+	float: left;
+	height: 100;
+	text-align: center;
+	width: 180px;
+}
+
+.gengduo-box>ul>li {
 	height: 100px;
 	border-bottom: 1px solid #CCCCCC;
 	margin-bottom: 6px;
 }
-
