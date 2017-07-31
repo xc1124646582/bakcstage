@@ -156,6 +156,7 @@ class Cases extends Component {
 			});	
     }.bind(this)
     upfn1=function(event){
+    	if(this.refs.fixedimg.files[0]!=undefined){
     		$.ajax({
 				type:"post",
 				url:"http://localhost:8100/cebest/upcases1",
@@ -167,8 +168,15 @@ class Cases extends Component {
       			console.log("666")
       		}
 			});		
+    		}else{
+    			alert("不能为空")
+    		}
+	
     }.bind(this)
     upfn2=function(event){
+    	if($("#houp").val()==""){
+    		alert("不能为空")
+    	}else{
     		$.ajax({
 				type:"post",
 				url:"http://localhost:8100/cebest/upscases1",
@@ -179,7 +187,9 @@ class Cases extends Component {
       		error:function(){
       			console.log("666")
       		}
-			});		
+			});	
+    	}
+	
     }.bind(this)
     render() {
         return (

@@ -60,8 +60,19 @@ upsat=function(){
 				url:"http://localhost:8100/cebest/upcontact",
 				data:{"id":this.state.cas,"con":$("#fetext").val()},
 				success:function(e){				
-				alert(e)
-
+				this.setState({
+						about:e[0],
+						address:e[0].address,
+						addressEn:e[0].addressEn,
+						hotlineOne:e[0].hotlineOne,
+						hotlineTwo:e[0].hotlineTwo,
+						emailOne:e[0].emailOne,
+						emailTwo:e[0].emailTwo,
+						web:e[0].web
+				})
+				$("#fetext").val("")
+				$(".fixs").css("display","none")
+				alert("修改成功")
       		}.bind(this),
       		error:function(){
       			console.log("666")
@@ -71,6 +82,7 @@ upsat=function(){
     render() {
         return (
         	<div className="contact"> 
+        	<h2>联系</h2>
         	<p className="address"><span>{this.state.address}</span><button onClick={this.fixeds}>修改</button></p>
         	<p className="addressEn"><span>{this.state.addressEn}</span><button onClick={this.fixeds}>修改</button></p>
         	<p className="hotlineOne"><span>{this.state.hotlineOne}</span><button onClick={this.fixeds}>修改</button></p>

@@ -28,6 +28,7 @@ font-size: 24px;}
 .box2 .list li span{ float: left;
 			width: 150px;
 			text-align: center;}
+			
 .cases1-box{ width: 420px;
 height: 260px;
 background: white;
@@ -38,6 +39,7 @@ padding: 12px;
 top: 50%;
 left: 50%;
 margin: -130px 0 0 -210px;}
+.cases1-box p{margin-top: 24px;}
 #confirm{display: block;
 float: none;
 padding: 4px 18px 4px 18px ;

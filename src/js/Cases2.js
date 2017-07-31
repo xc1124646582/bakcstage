@@ -5,7 +5,8 @@ class Cases2 extends Component {
     constructor(){
         super();
         this.state={
-            lis2:[]
+            lis2:[],
+            imagesww:null
         }
     };
     componentDidMount () {
@@ -85,7 +86,6 @@ class Cases2 extends Component {
 				contentType:false,
 				processData:false,
 				success:function(e){	
-					alert("哈哈")
       		},
       		error:function(){
       			console.log("666")
@@ -96,16 +96,24 @@ class Cases2 extends Component {
         fn=function(event){
         	
         	var aa=event.target
+        	var imgen=null
 				var  cid=aa.parentElement.firstElementChild.innerHTML
+				for(var i in this.state.lis2){
+						if(this.state.lis2[i].cid==cid){
+							imgen=this.state.lis2[i].img
+						}
+				}
+			 var imgsrc=imgen.split("/")[imgen.split("/").length-1]
+			 console.log(imgsrc)
 				{/* 删除*/}
 			$.ajax({
 				type:"post",
 				url:"http://localhost:8100/cebest/dlcases2",
-				data:{"cid":cid},
+				data:{"cid":cid,"imagesww":"public/images/"+imgsrc},
 				success:function(e){				
 				alert(e)
 				for(var i in this.state.lis2){
-						if(this.state.lis2[i].id==cid){
+						if(this.state.lis2[i].cid==cid){
 							var aa=this.state.lis2.splice(i,1)
 							this.setState({
 								lis2:this.state.lis2
@@ -205,7 +213,7 @@ class Cases2 extends Component {
 				<li><span>id</span>  <span>img</span> <span>title1</span> <span>title2</span></li>
 				{this.state.lis2.map(function(v,i){
 					return <li key={i}>
-					<span>{v.id}</span> 
+					<span>{v.cid}</span> 
 					<span><img src={v.img} /></span>    
 					<span>{v.title1}</span> 
 					<span>{v.title2}</span>

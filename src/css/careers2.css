@@ -1,0 +1,49 @@
+			
+			.careers2-box li{ list-style: none;
+			border-bottom: 1px solid #CCCCCC;
+			overflow: hidden;
+			text-align: center;
+			padding-top: 12px;
+			padding-bottom: 13px;
+						line-height: 70px;}
+			.careers2-box li span{ float: left;
+			width: 130px;
+			line-height: 70px;
+			text-align: center;}
+			.careers2-box li span:nth-child(5){
+				width: 160px;
+				line-height: 20px;
+			}
+			.careers2-box li span img{ width: 50px;
+			margin-top: 10px;
+			height: 50px;}
+			.careers2-box li>button{ width: 60px;
+			margin-top: 10px;
+			line-height: 30px;
+			height: 30px;}
+			
+.car2fix{ width: 100%;
+height: 100%;
+position: fixed;
+display: none;
+top: 0;
+left: 0;
+background-color: rgba(0,0,0,0.5);}
+.car2fix-box{ width: 360px;
+background: white;
+box-sizing: border-box;
+padding: 2%;
+position: absolute;
+border: 1px solid #CCCCCC;
+top: 50%;
+left: 50%;
+margin-left: -180px;
+margin-top: -170px;
+height: 340px;}
+.car2fix-box p{ margin-top: 13px;}
+.car2fix-box input{ 
+	margin-left: 12px;
+width: 80%;
+height: 26px;}
+.car2fix-box button{margin-left: 60px;
+padding: 9px 18px 9px 18px;}
