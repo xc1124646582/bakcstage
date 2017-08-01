@@ -11,10 +11,10 @@ class Cases2 extends Component {
 	};
 	componentDidMount() {
 
-		{ /*案例列表二*/ }
+		/*案例列表二*/
 		$.ajax({
 			type: "get",
-			url: "http://localhost:8100/cebest/alcases2",
+			url: "http://192.168.43.25:8100/cebest/alcases2",
 			async: true,
 			contentType: false,
 			processData: false,
@@ -32,7 +32,7 @@ class Cases2 extends Component {
 			if($("#text2").val() != "" && $("#text2s").val() != "" && this.refs.fils2.files[0] != undefined) {
 				$.ajax({
 					type: "post",
-					url: "http://localhost:8100/cebest/accases2",
+					url: "http://192.168.43.25:8100/cebest/accases2",
 					data: {
 						"title1": $("#text2").val(),
 						"title2": $("#text2s").val()
@@ -41,7 +41,7 @@ class Cases2 extends Component {
 						alert(e)
 						$.ajax({
 							type: "get",
-							url: "http://localhost:8100/cebest/alcases2",
+							url: "http://192.168.43.25:8100/cebest/alcases2",
 							async: true,
 							contentType: false,
 							processData: false,
@@ -78,7 +78,7 @@ class Cases2 extends Component {
 		console.log(fd)
 		$.ajax({
 			type: "post",
-			url: "http://localhost:8100/cebest/incases1",
+			url: "http://192.168.43.25:8100/cebest/incases1",
 			async: true,
 			data: fd,
 			contentType: false,
@@ -101,10 +101,11 @@ class Cases2 extends Component {
 			}
 		}
 		var imgsrc = imgen.split("/")[imgen.split("/").length - 1]
-		console.log(imgsrc) { /* 删除*/ }
+		console.log(imgsrc) 
+		/*删除*/
 		$.ajax({
 			type: "post",
-			url: "http://localhost:8100/cebest/dlcases2",
+			url: "http://192.168.43.25:8100/cebest/dlcases2",
 			data: {
 				"cid": cid,
 				"imagesww": "public/images/" + imgsrc
@@ -140,7 +141,7 @@ class Cases2 extends Component {
 
 		$.ajax({
 			type: "get",
-			url: "http://localhost:8100/cebest/alcases2",
+			url: "http://192.168.43.25:8100/cebest/alcases2",
 			async: true,
 			contentType: false,
 			processData: false,
@@ -158,7 +159,7 @@ class Cases2 extends Component {
 	upfns1 = function(event) {
 		$.ajax({
 			type: "post",
-			url: "http://localhost:8100/cebest/upcases2",
+			url: "http://192.168.43.25:8100/cebest/upcases2",
 			data: {
 				"id": this.state.upes
 			},
@@ -174,7 +175,7 @@ class Cases2 extends Component {
 		alert(this.state.upes)
 		$.ajax({
 			type: "post",
-			url: "http://localhost:8100/cebest/upscases2",
+			url: "http://192.168.43.25:8100/cebest/upscases2",
 			data: {
 				"id": this.state.upes,
 				"title1": $("#huper1").val()
@@ -191,7 +192,7 @@ class Cases2 extends Component {
 		alert(this.state.upes)
 		$.ajax({
 			type: "post",
-			url: "http://localhost:8100/cebest/upscases3",
+			url: "http://192.168.43.25:8100/cebest/upscases3",
 			data: {
 				"id": this.state.upes,
 				"title2": $("#huper2").val()

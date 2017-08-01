@@ -15,7 +15,7 @@ class Careers2 extends Component {
 	componentDidMount = function() {
 		$.ajax({
 			type: "get",
-			url: "http://localhost:8100/cebest/careers2",
+			url: "http://192.168.43.25:8100/cebest/careers2",
 			async: true,
 			contentType: false,
 			processData: false,
@@ -41,7 +41,7 @@ class Careers2 extends Component {
 		console.log(fd)
 		$.ajax({
 			type: "post",
-			url: "http://localhost:8100/cebest/incases1",
+			url: "http://192.168.43.25:8100/cebest/incases1",
 			async: true,
 			data: fd,
 			contentType: false,
@@ -56,7 +56,7 @@ class Careers2 extends Component {
 
 		$.ajax({
 			type: "post",
-			url: "http://localhost:8100/cebest/upcareers2img",
+			url: "http://192.168.43.25:8100/cebest/upcareers2img",
 			data: {
 				"id": this.state.id
 			},
@@ -107,7 +107,7 @@ class Careers2 extends Component {
 		}
 		$.ajax({
 			type: "post",
-			url: "http://localhost:8100/cebest/upcareers2",
+			url: "http://192.168.43.25:8100/cebest/upcareers2",
 			data: {
 				"id": this.state.id,
 				"title1": title1,

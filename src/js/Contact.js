@@ -20,7 +20,7 @@ class Contact extends Component {
 		{ /* 案例列表一*/ }
 		$.ajax({
 			type: "get",
-			url: "http://localhost:8100/cebest/contact",
+			url: "http://192.168.43.25:8100/cebest/contact",
 			async: true,
 			contentType: false,
 			processData: false,
@@ -57,7 +57,7 @@ class Contact extends Component {
 	upsat = function() {
 		$.ajax({
 			type: "post",
-			url: "http://localhost:8100/cebest/upcontact",
+			url: "http://192.168.43.25:8100/cebest/upcontact",
 			data: {
 				"id": this.state.cas,
 				"con": $("#fetext").val()

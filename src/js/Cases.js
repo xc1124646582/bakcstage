@@ -11,10 +11,10 @@ class Cases extends Component {
 		}
 	};
 	componentDidMount() {
-		{ /* 案例列表一*/ }
+		/* 案例列表一*/
 		$.ajax({
 			type: "get",
-			url: "http://localhost:8100/cebest/alcases1",
+			url: "http://192.168.43.25:8100/cebest/alcases1",
 			async: true,
 			contentType: false,
 			processData: false,
@@ -30,12 +30,12 @@ class Cases extends Component {
 			}
 		});
 
-		{ /* 上传*/ }
+		/* 上传*/ 
 		$('#addsbtn1').click(function() {
 			if($("#text1").val() != "" && this.refs.fils1.files[0] != undefined) {
 				$.ajax({
 					type: "post",
-					url: "http://localhost:8100/cebest/accases1",
+					url: "http://192.168.43.25:8100/cebest/accases1",
 					data: {
 						"text": $("#text1").val()
 					},
@@ -43,7 +43,7 @@ class Cases extends Component {
 						alert(e)
 						$.ajax({
 							type: "get",
-							url: "http://localhost:8100/cebest/alcases1",
+							url: "http://192.168.43.25:8100/cebest/alcases1",
 							success: function(e) {
 								this.setState({
 									lis: e
@@ -77,7 +77,7 @@ class Cases extends Component {
 		console.log(fd)
 		$.ajax({
 			type: "post",
-			url: "http://localhost:8100/cebest/incases1",
+			url: "http://192.168.43.25:8100/cebest/incases1",
 			async: true,
 			data: fd,
 			contentType: false,
@@ -101,10 +101,11 @@ class Cases extends Component {
 			}
 		}
 		var imgsrc = imgen.split("/")[imgen.split("/").length - 1]
-		console.log(imgsrc) { /* 删除*/ }
+		console.log(imgsrc) 
+		/* 删除*/
 		$.ajax({
 			type: "post",
-			url: "http://localhost:8100/cebest/dlcases1",
+			url: "http://192.168.43.25:8100/cebest/dlcases1",
 			data: {
 				"cid": cid,
 				"imagesww": "public/images/" + imgsrc
@@ -137,7 +138,7 @@ class Cases extends Component {
 		$(".black1").css("display", "none")
 		$.ajax({
 			type: "get",
-			url: "http://localhost:8100/cebest/alcases1",
+			url: "http://192.168.43.25:8100/cebest/alcases1",
 			async: true,
 			contentType: false,
 			processData: false,
@@ -157,7 +158,7 @@ class Cases extends Component {
 		if(this.refs.fixedimg.files[0] != undefined) {
 			$.ajax({
 				type: "post",
-				url: "http://localhost:8100/cebest/upcases1",
+				url: "http://192.168.43.25:8100/cebest/upcases1",
 				data: {
 					"cid": this.state.upes
 				},
@@ -179,7 +180,7 @@ class Cases extends Component {
 		} else {
 			$.ajax({
 				type: "post",
-				url: "http://localhost:8100/cebest/upscases1",
+				url: "http://192.168.43.25:8100/cebest/upscases1",
 				data: {
 					"cid": this.state.upes,
 					"con": $("#houp").val()

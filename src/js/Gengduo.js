@@ -11,7 +11,7 @@ class Gengduo extends Component {
 	componentDidMount = function() {
 		$.ajax({
 			type: "get",
-			url: "http://localhost:8100/cebest/gengduo",
+			url: "http://192.168.43.25:8100/cebest/gengduo",
 			async: true,
 			contentType: false,
 			processData: false,
