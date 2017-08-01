@@ -26,6 +26,9 @@
 	display: none;
 }
 
+.know {
+	display: none;
+}
 button {
 	cursor: pointer;
 }

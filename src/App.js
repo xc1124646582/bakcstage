@@ -8,6 +8,7 @@ import Contact from './js/Contact';
 import Careers2 from './js/Careers2';
 import Chinese2 from './js/Chinese2';
 import Gengduo from './js/Gengduo';
+import Know from './js/Know';
 import './css/admin.css';
 import './css/css.css';
 import './css/cases.css';
@@ -16,6 +17,7 @@ import './css/contact.css';
 import './css/careers2.css';
 import './css/chinese2.css';
 import './css/gengduo.css';
+import './css/know.css';
 class App extends Component {
 	componentDidMount=function () {
 	  $(".leftnav h2").click(function(){
@@ -62,6 +64,11 @@ class App extends Component {
     	$(".gengduo").show()
     	$(".bread li:nth-child(2)").text("更多服务")
     })
+    $("#know").click(function(){
+    	$(".admin").children().hide()
+    	$(".know").show()
+    	$(".bread li:nth-child(2)").text("了解更多")
+    })
 	}
   render() {
     return (
@@ -91,6 +98,7 @@ class App extends Component {
     <li id="careers2"><a><span className="icon-caret-right"></span>人才二</a></li> 
     <li id="chinese2"><a><span className="icon-caret-right"></span>中企云</a></li>
     <li id="gengduo"><a><span className="icon-caret-right"></span>更多服务</a></li>
+    <li id="know"><a><span className="icon-caret-right"></span>了解更多</a></li>
   </ul>  
 </div>
 <ul className="bread">
@@ -118,6 +126,9 @@ class App extends Component {
   </div>
   <div className="gengduo">
     <Gengduo></Gengduo>
+  </div>
+    <div className="know">
+    <Know></Know>
   </div>
   <p>啊实打实的</p>
 </div>

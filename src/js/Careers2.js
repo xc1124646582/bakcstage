@@ -41,18 +41,29 @@ class Careers2 extends Component {
 		console.log(fd)
 		$.ajax({
 			type: "post",
+<<<<<<< HEAD
 			url: "http://192.168.43.25:8100/cebest/incases1",
+=======
+			url: "http://localhost:8100/cebest/incareers2",
+>>>>>>> origin/master
 			async: true,
 			data: fd,
 			contentType: false,
 			processData: false,
 			success: function(e) {
-				console.log(e)
-			},
+			
+			$.ajax({
+			type: "post",
+			url: "http://localhost:8100/cebest/upcareers2img",
+			data: {"id": this.state.id},
+			success: function(e) {
+				alert(e)
+			}.bind(this),
 			error: function() {
 				console.log("666")
 			}
 		});
+<<<<<<< HEAD
 
 		$.ajax({
 			type: "post",
@@ -61,6 +72,9 @@ class Careers2 extends Component {
 				"id": this.state.id
 			},
 			success: function(e) {}.bind(this),
+=======
+			}.bind(this),
+>>>>>>> origin/master
 			error: function() {
 				console.log("666")
 			}
@@ -131,7 +145,7 @@ class Careers2 extends Component {
 	render() {
 		return(
 			<div className="careers2">
-<p className="titles"></p>
+<p className="titles">hahahah </p>
 <div className="careers2-box">
 <ul>{this.state.careers2.map(function(v,i){
 					return <li key={i+1}>
@@ -146,7 +160,7 @@ class Careers2 extends Component {
 <div className='car2fix'>
         	<div className="car2fix-box">
         	<h3>修改</h3>
-        	<p>选择要添加的图片   <input type="file" ref="careers2" onChange={this.setFiles.bind(null,this.refs.careers2)}   multiple="multiple"/></p>
+        	<p>选择要添加的图片   <input type="file" ref="cars1" onChange={this.setFiles.bind(null,this.refs.cars1)}   multiple="multiple"/></p>
         	<p>title1<input type="text" id="title1"/></p>
         	<p>title2<input type="text" id="title2"/></p>
         	<p>con<input type="text" id="con"/></p>
