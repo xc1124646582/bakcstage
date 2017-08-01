@@ -77,11 +77,7 @@ class Cases extends Component {
 		console.log(fd)
 		$.ajax({
 			type: "post",
-<<<<<<< HEAD
 			url: "http://192.168.43.25:8100/cebest/incases1",
-=======
-			url: "http://localhost:8100/cebest/incases1a",
->>>>>>> origin/master
 			async: true,
 			data: fd,
 			contentType: false,
@@ -107,11 +103,8 @@ class Cases extends Component {
 		}
 		var imgsrc = imgen.split("/")[imgen.split("/").length - 1]
 		console.log(imgsrc) 
-<<<<<<< HEAD
+
 		/* 删除*/
-=======
-		{ /* 删除*/ }
->>>>>>> origin/master
 		$.ajax({
 			type: "post",
 			url: "http://192.168.43.25:8100/cebest/dlcases1",

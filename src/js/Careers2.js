@@ -41,11 +41,7 @@ class Careers2 extends Component {
 		console.log(fd)
 		$.ajax({
 			type: "post",
-<<<<<<< HEAD
 			url: "http://192.168.43.25:8100/cebest/incases1",
-=======
-			url: "http://localhost:8100/cebest/incareers2",
->>>>>>> origin/master
 			async: true,
 			data: fd,
 			contentType: false,
@@ -63,7 +59,7 @@ class Careers2 extends Component {
 				console.log("666")
 			}
 		});
-<<<<<<< HEAD
+
 
 		$.ajax({
 			type: "post",
@@ -71,10 +67,11 @@ class Careers2 extends Component {
 			data: {
 				"id": this.state.id
 			},
-			success: function(e) {}.bind(this),
-=======
+			success: function(e) {
+				
 			}.bind(this),
->>>>>>> origin/master
+
+
 			error: function() {
 				console.log("666")
 			}
