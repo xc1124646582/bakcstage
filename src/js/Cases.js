@@ -66,7 +66,7 @@ class Cases extends Component {
 		}.bind(this))
 
 	};
-
+/* 图片*/
 	setFiles = function(element) {
 		console.log(element)
 		var files = []
@@ -77,7 +77,7 @@ class Cases extends Component {
 		console.log(fd)
 		$.ajax({
 			type: "post",
-			url: "http://localhost:8100/cebest/incases1",
+			url: "http://localhost:8100/cebest/incases1a",
 			async: true,
 			data: fd,
 			contentType: false,
@@ -91,6 +91,7 @@ class Cases extends Component {
 		});
 	}
 
+/* 删除*/
 	fn = function(event) {
 		var aa = event.target
 		var imgen = null
@@ -101,13 +102,14 @@ class Cases extends Component {
 			}
 		}
 		var imgsrc = imgen.split("/")[imgen.split("/").length - 1]
-		console.log(imgsrc) { /* 删除*/ }
+		console.log(imgsrc) 
+		{ /* 删除*/ }
 		$.ajax({
 			type: "post",
 			url: "http://localhost:8100/cebest/dlcases1",
 			data: {
 				"cid": cid,
-				"imagesww": "public/images/" + imgsrc
+				"imagesww": "public/images/"+imgsrc
 			},
 			success: function(e) {
 				alert(e)
@@ -125,6 +127,8 @@ class Cases extends Component {
 			}
 		});
 	}.bind(this);
+	
+	//点击修改
 	revisefn = function(event) {
 		$(".black1").css("display", "block")
 		var aa = event.target
@@ -133,6 +137,8 @@ class Cases extends Component {
 			upes: cid
 		})
 	}.bind(this)
+	
+	
 	confirmfn = function() {
 		$(".black1").css("display", "none")
 		$.ajax({
