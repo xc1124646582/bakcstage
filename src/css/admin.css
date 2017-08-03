@@ -81,7 +81,7 @@ ul,li {
 }
 
 
-/********头部******/
+/*头部*/
 
 .header {
 	height: 70px;
@@ -178,7 +178,7 @@ ul,li {
 }
 
 
-/***主要内容***/
+/*主要内容*/
 
 .admin {
 	background: #fff;
@@ -357,8 +357,7 @@ ul,li {
 	background: #08bbe1;
 }
 
-input[type="checkbox"],
-input[type="radio"] {
+input[type="checkbox"],input[type="radio"] {
 	width: 15px;
 	height: 15px;
 	vertical-align: -3px;

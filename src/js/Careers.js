@@ -15,7 +15,7 @@ class Careers extends Component {
 	componentDidMount = function() {
 		$.ajax({
 			type: "get",
-			url: "http://localhost:8100/cebest/careers",
+			url: "http://192.168.43.25:8100/cebest/careers",
 			async: true,
 			contentType: false,
 			processData: false,
@@ -64,7 +64,7 @@ class Careers extends Component {
 			if(strs1.length <= 253 && strs2.length <= 253) {
 				$.ajax({
 					type: "post",
-					url: "http://localhost:8100/cebest/careersup",
+					url: "http://192.168.43.25:8100/cebest/careersup",
 					data: {
 						"work": $("#work1").val(),
 						"duty": $("#work2").val(),
@@ -81,7 +81,7 @@ class Careers extends Component {
 						$(".textbox").css("display", "none")
 						$.ajax({
 							type: "get",
-							url: "http://localhost:8100/cebest/careers",
+							url: "http://192.168.43.25:8100/cebest/careers",
 							async: true,
 							contentType: false,
 							processData: false,
@@ -121,10 +121,11 @@ class Careers extends Component {
 			if(this.state.work[i].work == work) {
 				rid = this.state.work[i].rid
 			}
-		} { /* 删除*/ }
+		}
+		/* 删除*/
 		$.ajax({
 			type: "post",
-			url: "http://localhost:8100/cebest/careersclear",
+			url: "http://192.168.43.25:8100/cebest/careersclear",
 			data: {
 				"rid": rid
 			},
