@@ -35,7 +35,11 @@ class Know extends Component {
                     }
                 };
                 this.setState({
-					know: e
+					know: e,
+					h21: this.state.know1[0].h2,
+					h22: this.state.know2[0].h2,
+					h23: this.state.know3[0].h2,
+					h24: this.state.know4[0].h2
 				})
 			}.bind(this),
 			error: function() {
@@ -94,12 +98,21 @@ knclear=function(){
 	$(".knbox1").css("display","none")
 }
 knups=function(){
+		var tit = $("#kntexts").val()
+		if($("#kntexts").val() == "") {
+			for(var i = 0; i < this.state.know.length; i++) {
+				if(this.state.know[i].id == this.state.cpid) {
+					tit = this.state.know[i].tit
+				}
+			}
+		}
+	
 			$.ajax({
 				type: "post",
 				url: "http://192.168.43.25:8100/cebest/know2",
 				data: {
 				"id": this.state.cpid,
-				"tit":$("#kntexts").val()
+				"tit":tit
 				},
 				success: function(e) {
 					this.setState({
@@ -192,7 +205,8 @@ kn2fo=function(){
 	$(".knbox2").css("display","none")
 }
 kn2fp=function(){
-	$.ajax({
+	if($("#kndars").val()!=""&& this.refs.kn2img.files[0] != undefined){
+			$.ajax({
 				type: "post",
 				url: "http://192.168.43.25:8100/cebest/knowins",
 data: {"con": this.state.index,"tit":$("#kndars").val()},
@@ -201,7 +215,11 @@ data: {"con": this.state.index,"tit":$("#kndars").val()},
 						know1:[],
 						know2:[],
 						know3:[],
-						know4:[]
+						know4:[],
+						h21:null,
+						h22:null,
+						h23:null,
+						h24:null,
 					})
 					
 					for (var i in e) {
@@ -225,12 +243,77 @@ data: {"con": this.state.index,"tit":$("#kndars").val()},
 					console.log("666")
 				}
 			});
+	}else{
+		alert("输入完整")
+	}
 }.bind(this)
+entfn=function(event){
+	$(".knbox3").css("display","block")
+	var id = event.target.parentElement.firstElementChild.innerHTML
+	var index=null
+	for(var i=0;i<this.state.know.length;i++){
+		if(this.state.know[i].h2==id){
+			index=this.state.know[i].con
+		}
+	}
+	this.setState({
+		index:index
+	})
+}.bind(this)
+knupfs=function(event){
+	console.log(this.state.index)
+	$(".knbox3").css("display","none")
+			$.ajax({
+				type: "post",
+				url: "http://localhost:8100/cebest/knowacf",
+				data: {
+				"con": this.state.index,
+				"h2":$("#knfsts").val()
+				},
+				success: function(e) {
+				this.setState({
+						know1:[],
+						know2:[],
+						know3:[],
+						know4:[],
+						h21:null,
+						h22:null,
+						h23:null,
+						h24:null,
+					})
+				for (var i in e) {
+                    if (e[i].con=='1') {
+                        this.state.know1.push(e[i])
+                    }else if (e[i].con=='2'){
+                        this.state.know2.push(e[i])
+                    }else if (e[i].con=='3'){
+                        this.state.know3.push(e[i])
+                    }else if (e[i].con=='4'){
+                        this.state.know4.push(e[i])
+                    }
+                };
+                this.setState({
+					know: e,
+					h21: this.state.know1[0].h2,
+					h22: this.state.know2[0].h2,
+					h23: this.state.know3[0].h2,
+					h24: this.state.know4[0].h2
+				})
+				}.bind(this),
+				error: function() {
+					console.log("666")
+				}
+			});
+}.bind(this)
+knclearzs=function(){
+	$(".knbox3").css("display","none")
+}
 	render() {
 		return(
 			<div className="know">
 			<ul className="klist">
 			<h2>品牌网站</h2>
+			 <p><span>{this.state.h21}</span>    <button onClick={this.entfn}>修改</button></p> 
 			{this.state.know1.map(function(v,i){
 				return <li className="clear" key={i}><span>{v.id}</span><p><img src={v.img}/></p><p>{v.tit}</p> <p><button onClick={this.kndats}>删除</button><button onClick={this.ades}>修改</button></p></li>
 			}.bind(this))}
@@ -239,24 +322,27 @@ data: {"con": this.state.index,"tit":$("#kndars").val()},
 			
 			<ul className="klist">
 			<h2>电商平台</h2>
+			 			 <p><span>{this.state.h22}</span>    <button onClick={this.entfn}>修改</button></p> 
 			{this.state.know2.map(function(v,i){
-				return <li className="clear" key={i}><span>{v.id}</span><p><img src={v.img}/></p><p>{v.tit}</p> <p><button onClick={this.kndats}>删除</button><button onClick={this.ades}>修改</button></p></li>
+				return <li className="clear" key={i}><span>{v.id}</span><p><img src={v.img}/></p><p>{v.tit}</p>  <p><button onClick={this.kndats}>删除</button><button onClick={this.ades}>修改</button></p></li>
 			}.bind(this))}
 			<li className="knowss"><button onClick={this.addknow}>增加</button></li>
 			</ul>
 			
 			<ul className="klist">
 			<h2>活动营销</h2>
+			 			 <p><span>{this.state.h23}</span>    <button onClick={this.entfn}>修改</button></p> 
 			{this.state.know3.map(function(v,i){
-				return <li className="clear" key={i}><span>{v.id}</span><p><img src={v.img}/></p><p>{v.tit}</p> <p><button onClick={this.kndats}>删除</button><button onClick={this.ades}>修改</button></p></li>
+				return <li className="clear" key={i}><span>{v.id}</span><p><img src={v.img}/></p><p>{v.tit}</p>  <p><button onClick={this.kndats}>删除</button><button onClick={this.ades}>修改</button></p></li>
 			}.bind(this))}
 			<li className="knowss"><button onClick={this.addknow}>增加</button></li>
 			</ul>
 			
 			<ul className="klist">
 			<h2>业务系统</h2>
+			 			 <p><span>{this.state.h24}</span>    <button onClick={this.entfn}>修改</button></p> 
 			{this.state.know4.map(function(v,i){
-				return <li className="clear" key={i}><span>{v.id}</span><p><img src={v.img}/></p><p>{v.tit}</p> <p><button onClick={this.kndats}>删除</button><button onClick={this.ades}>修改</button></p></li>
+				return <li className="clear" key={i}><span>{v.id}</span><p><img src={v.img}/></p><p>{v.tit}</p><p><button onClick={this.kndats}>删除</button><button onClick={this.ades}>修改</button></p></li>
 			}.bind(this))}
 			<li className="knowss"><button onClick={this.addknow}>增加</button></li>
 			</ul>
@@ -277,6 +363,14 @@ data: {"con": this.state.index,"tit":$("#kndars").val()},
 				        	<p>选择要添加的图片   <input type="file" id="kn2img" ref="kn2img" onChange={this.setFiles.bind(this,this.refs.kn2img)}    multiple="multiple"/></p>
 				        	<p> <input type="text" id="kndars"/></p>
 				        	<p><button onClick={this.kn2fp}>确定</button><button onClick={this.kn2fo}>取消</button></p>
+			</div>
+				</div>
+				
+			<div className="knows knbox3">
+			<div>
+			<h3>修改</h3>
+			<p className="knhead"><input type="text" id="knfsts"/></p> 
+			<p> <button onClick={this.knupfs}>确定</button><button onClick={this.knclearzs}>取消</button></p>
 			</div>
 				</div>
       </div>
