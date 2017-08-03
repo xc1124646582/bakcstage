@@ -6,7 +6,10 @@ class Careers extends Component {
 		super();
 		this.state = {
 			work: [],
-			arr: []
+			arr: [],
+			id:null,
+			addid:null,
+			reps:null
 		}
 	};
 	componentDidMount = function() {
@@ -142,6 +145,143 @@ class Careers extends Component {
 		});
 
 	}.bind(this)
+	carssn=function(event){
+		var arr = []
+		var id = event.target.parentElement.parentElement.parentElement.parentElement.firstElementChild.innerHTML
+		var text = event.target.parentElement.firstElementChild.innerHTML
+		var index=null
+		for(var i=0;i<this.state.work.length;i++){
+			if(this.state.work[i].work==id){
+				index=this.state.work[i].rid
+				arr=this.state.work[i].titlea.split("?")
+			}
+		}
+		for(var j = 0; j < arr.length; j++) {
+			if(arr[j] == text) {
+				arr.splice(j, 1)
+			}
+		}
+		
+		var str = arr.join("?")
+$.ajax({
+			type: "post",
+			url: "http://localhost:8100/cebest/careerdlp",
+			data: {
+				"titlea": str,
+				"rid": index
+			},
+			success: function(e) {
+				this.setState({
+					work: e
+				})
+			}.bind(this),
+			error: function() {
+				console.log("666")
+			}
+		});
+	}.bind(this)
+	carssn2=function(event){
+				var arr = []
+		var id = event.target.parentElement.parentElement.parentElement.parentElement.firstElementChild.innerHTML
+		var text = event.target.parentElement.firstElementChild.innerHTML
+		var index=null
+		for(var i=0;i<this.state.work.length;i++){
+			if(this.state.work[i].work==id){
+				index=this.state.work[i].rid
+				arr=this.state.work[i].titleb.split("?")
+			}
+		}
+		for(var j = 0; j < arr.length; j++) {
+			if(arr[j] == text) {
+				arr.splice(j, 1)
+			}
+		}
+		
+		var str = arr.join("?")
+$.ajax({
+			type: "post",
+			url: "http://localhost:8100/cebest/careerdlp2",
+			data: {
+				"titleb": str,
+				"rid": index
+			},
+			success: function(e) {
+				this.setState({
+					work: e
+				})
+			}.bind(this),
+			error: function() {
+				console.log("666")
+			}
+		});
+	}.bind(this)
+	upcarss1=function(event){
+		$(".cllearboxs").css("display","block")
+		var id = event.target.parentElement.parentElement.parentElement.firstElementChild.innerHTML
+		var index
+		for(var i=0;i<this.state.work.length;i++){
+			if(this.state.work[i].work==id){
+				index=this.state.work[i].rid
+			}
+		}
+		this.setState({
+			addid:index
+		})
+		this.setState({
+			reps:event.target.id
+		})
+	}.bind(this)
+	carcnn=function(){
+		$(".cllearboxs").css("display","none")
+	}
+	carqds=function(){
+		if(this.state.reps=="btns1"){
+			var arr = []
+			arr = this.state.work[this.state.addid-1].titlea.split("?")
+			arr.push($("#carval").val())
+			var str = arr.join("?")
+			$.ajax({
+			type: "post",
+			url: "http://localhost:8100/cebest/careerhq1",
+			data: {
+				"titlea": str,
+				"rid": this.state.addid
+			},
+			success: function(e) {
+				this.setState({
+					work: e
+				})
+				$(".cllearboxs").css("display","none")
+			}.bind(this),
+			error: function() {
+				console.log("失败了")
+			}
+		});
+		}else if(this.state.reps=="btns2"){
+			var arr = []
+			arr = this.state.work[this.state.addid-1].titlea.split("?")
+			arr.push($("#carval").val())
+			var str = arr.join("?")
+			$.ajax({
+			type: "post",
+			url: "http://localhost:8100/cebest/careerhq2",
+			data: {
+				"titleb": str,
+				"rid": this.state.addid
+			},
+			success: function(e) {
+				this.setState({
+					work: e
+				})
+				$(".cllearboxs").css("display","none")
+			}.bind(this),
+			error: function() {
+				console.log("失败了")
+			}
+		});
+		}
+
+	}.bind(this)
 	render() {
 		return(
 			<div className="Careers">
@@ -161,24 +301,33 @@ class Careers extends Component {
                                         <div>{v.work}</div>
                                         <div>{v.duty}</div>
                                             <div className="my-detail">
+                                            <p className="careersadds"><button onClick={this.upcarss1} id="btns1">添加</button></p>
                                                  {v.titlea.split("?").map(function (v,i) {
                                                      return <p key={i}>
-                                                         <span>{i+1}、</span>{v}
+                                                         <span>{i+1}、</span><span><span>{v}</span> <br/><button onClick={this.carssn}>删除</button></span>
                                                      </p>
-                                                 })}
+                                                 }.bind(this))}
                                                  </div>
                                                  <div>
+                                                 <p className="careersadds"><button onClick={this.upcarss1} id="btns2">添加</button></p>
                                                 {v.titleb.split("?").map(function (v,i) {
                                                     return <p key={i}>
-                                                        <span>{i+1}、</span>{v}
+                                                        <span>{i+1}、</span><span><span>{v}</span> <br/><button onClick={this.carssn2}>删除</button></span>
                                                     </p>
-                                                })}
+                                                }.bind(this))}
                                             </div>
                                             <div><button className="clearwork" onClick={this.clearworkfn}>删除</button></div>
                                             
                                         </div>
                                     }.bind(this))
                                 }
+</div>
+<div className="cllearboxs">
+<div>
+<h2>添加</h2>
+<p><input tupe="text" id="carval"/></p>
+<p><button onClick={this.carqds}>确定</button> <button onClick={this.carcnn}>取消</button></p>
+</div>
 </div>
       </div>
 		);

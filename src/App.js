@@ -8,7 +8,9 @@ import Contact from './js/Contact';
 import Careers2 from './js/Careers2';
 import Chinese2 from './js/Chinese2';
 import Gengduo from './js/Gengduo';
+import Logo from './js/Logo';
 import Know from './js/Know';
+import Home from './js/Home';
 import './css/admin.css';
 import './css/css.css';
 import './css/cases.css';
@@ -69,6 +71,16 @@ class App extends Component {
     	$(".know").show()
     	$(".bread li:nth-child(2)").text("了解更多")
     })
+    $("#logo").click(function(){
+    	$(".admin").children().hide()
+    	$(".logos").show()
+    	$(".bread li:nth-child(2)").text("LOGO管理")
+    })
+    $("#home").click(function(){
+    	$(".admin").children().hide()
+    	$(".home").show()
+    	$(".bread li:nth-child(2)").text("栏目管理")
+    })
 	}
   render() {
     return (
@@ -89,8 +101,8 @@ class App extends Component {
   <h2><a><span className="icon-pencil-square-o"></span>栏目管理</a></h2>
   <ul>
     <li><a><span className="icon-caret-right"></span>内容管理</a></li>
-    <li><a><span className="icon-caret-right"></span>添加内容</a></li>
-    <li><a><span className="icon-caret-right"></span>分类管理</a></li> 
+    <li id="home"><a><span className="icon-caret-right"></span>栏目管理</a></li>
+    <li id="logo"><a><span className="icon-caret-right"></span>LOGO管理</a></li> 
     <li id="cases"><a><span className="icon-caret-right"></span>案例一</a></li>   
     <li id="cases2"><a><span className="icon-caret-right"></span>案例二</a></li>  
     <li id="contact"><a><span className="icon-caret-right"></span>联系</a></li>   
@@ -129,6 +141,12 @@ class App extends Component {
   </div>
     <div className="know">
     <Know></Know>
+  </div>
+  <div className="logos">
+    <Logo></Logo>
+  </div>
+   <div className="home">
+    <Home></Home>
   </div>
   <p>啊实打实的</p>
 </div>

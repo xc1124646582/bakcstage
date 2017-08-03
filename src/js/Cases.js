@@ -101,7 +101,7 @@ class Cases extends Component {
 				imgen = this.state.lis[i].src
 			}
 		}
-		var imgsrc = imgen.split("/")[imgen.split("/").length - 1]
+		var imgsrc = imgen.split("/")[imgen.split("/").length-1]
 		console.log(imgsrc) 
 		{ /* 删除*/ }
 		$.ajax({

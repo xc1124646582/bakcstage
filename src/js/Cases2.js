@@ -24,7 +24,7 @@ class Cases2 extends Component {
 				})
 			}.bind(this),
 			error: function() {
-				console.log("666")
+				console.log("失败了")
 			}
 		});
 
@@ -52,12 +52,12 @@ class Cases2 extends Component {
 								console.log(this.state.lis2)
 							}.bind(this),
 							error: function() {
-								console.log("666")
+								console.log("失败了")
 							}
 						});
 					}.bind(this),
 					error: function() {
-						console.log("666")
+						console.log("失败了")
 					}
 				});
 			} else {
@@ -85,7 +85,7 @@ class Cases2 extends Component {
 			processData: false,
 			success: function(e) {},
 			error: function() {
-				console.log("666")
+				console.log("失败了")
 			}
 		});
 		console.log(element.files[0])
@@ -123,7 +123,7 @@ class Cases2 extends Component {
 				console.log(this.state.lis2)
 			}.bind(this),
 			error: function() {
-				alert("666")
+				alert("失败了")
 			}
 		});
 	}.bind(this);
@@ -152,7 +152,7 @@ class Cases2 extends Component {
 				console.log(this.state.lis2)
 			}.bind(this),
 			error: function() {
-				console.log("666")
+				console.log("失败了")
 			}
 		});
 	}.bind(this)
@@ -167,7 +167,7 @@ class Cases2 extends Component {
 				alert(e)
 			}.bind(this),
 			error: function() {
-				console.log("666")
+				console.log("失败了")
 			}
 		});
 	}.bind(this)
@@ -180,12 +180,11 @@ class Cases2 extends Component {
 				alert(e)
 			}.bind(this),
 			error: function() {
-				console.log("666")
+				console.log("失败了")
 			}
 		});
 	}.bind(this)
 	upfns3 = function(event) {
-		alert(this.state.upes)
 		$.ajax({
 			type: "post",
 			url: "http://localhost:8100/cebest/casestext2",
@@ -194,7 +193,7 @@ class Cases2 extends Component {
 				alert(e)
 			}.bind(this),
 			error: function() {
-				console.log("666")
+				console.log("失败了")
 			}
 		});
 	}.bind(this)
