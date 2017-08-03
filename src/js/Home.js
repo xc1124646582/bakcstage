@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import $ from 'jquery';
+import conf from './../config';
 
 class Home extends Component {
 	constructor() {
@@ -12,7 +13,7 @@ class Home extends Component {
 		componentDidMount = function() {
 			$.ajax({
 			type: "get",
-			url: "http://192.168.43.25:8100/cebest/home",
+			url: conf.url+"/cebest/home",
 			async: true,
 			contentType: false,
 			processData: false,
@@ -56,7 +57,7 @@ homeups=function(){
 		console.log(tita,titEn)
 			$.ajax({
 				type: "post",
-				url: "http://192.168.43.25:8100/cebest/homeac",
+				url: conf.url+"/cebest/homeac",
 data: {"id": this.state.id,"tita":tita,"titEn":titEn},
 				success: function(e) {
 					this.setState({

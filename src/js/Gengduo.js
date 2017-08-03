@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import $ from 'jquery';
+import conf from './../config';
 
 class Gengduo extends Component {
 	constructor() {
@@ -13,7 +14,7 @@ class Gengduo extends Component {
 	componentDidMount = function() {
 		$.ajax({
 			type: "get",
-			url: "http://192.168.43.25:8100/cebest/gengduo",
+			url: conf.url+"/cebest/gengduo",
 			async: true,
 			contentType: false,
 			processData: false,
@@ -40,7 +41,7 @@ class Gengduo extends Component {
 		console.log(fd)
 		$.ajax({
 			type: "post",
-			url: "http://192.168.43.25:8100/cebest/ingengduo",
+			url: conf.url+"/cebest/ingengduo",
 			async: true,
 			data: fd,
 			contentType: false,
@@ -48,7 +49,7 @@ class Gengduo extends Component {
 			success: function(e) {
 				$.ajax({
 					type: "post",
-					url: "http://192.168.43.25:8100/cebest/gengduoaa",
+					url: conf.url+"/cebest/gengduoaa",
 					data: {
 						"id": this.state.id
 					},
@@ -99,7 +100,7 @@ gdups=function(){
 		}
 					$.ajax({
 					type: "post",
-					url: "http://192.168.43.25:8100/cebest/gengduobb",
+					url: conf.url+"/cebest/gengduobb",
 					data: {
 						"id": this.state.id,
 						"title1":title1,
@@ -134,7 +135,7 @@ sc=function(event){
 		var str = arr.join("?")
 		$.ajax({
 			type: "post",
-			url: "http://192.168.43.25:8100/cebest/gengduocs",
+			url: conf.url+"/cebest/gengduocs",
 			data: {
 				"sumary": str,
 				"id": id
@@ -170,7 +171,7 @@ gdacc = function(event) {
 			var str = arr.join("?")
 			$.ajax({
 				type: "post",
-				url: "http://192.168.43.25:8100/cebest/gengduocs",
+				url: conf.url+"/cebest/gengduocs",
 				data: {
 				"sumary": str,
 				"id": this.state.addid

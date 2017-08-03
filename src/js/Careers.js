@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import $ from 'jquery';
+import conf from './../config';
 
 class Careers extends Component {
 	constructor() {
@@ -15,7 +16,7 @@ class Careers extends Component {
 	componentDidMount = function() {
 		$.ajax({
 			type: "get",
-			url: "http://192.168.43.25:8100/cebest/careers",
+			url: conf.url+"/cebest/careers",
 			async: true,
 			contentType: false,
 			processData: false,
@@ -64,7 +65,7 @@ class Careers extends Component {
 			if(strs1.length <= 253 && strs2.length <= 253) {
 				$.ajax({
 					type: "post",
-					url: "http://192.168.43.25:8100/cebest/careersup",
+					url: conf.url+"/cebest/careersup",
 					data: {
 						"work": $("#work1").val(),
 						"duty": $("#work2").val(),
@@ -81,7 +82,7 @@ class Careers extends Component {
 						$(".textbox").css("display", "none")
 						$.ajax({
 							type: "get",
-							url: "http://192.168.43.25:8100/cebest/careers",
+							url: conf.url+"/cebest/careers",
 							async: true,
 							contentType: false,
 							processData: false,
@@ -124,7 +125,7 @@ class Careers extends Component {
 		} { /* 删除*/ }
 		$.ajax({
 			type: "post",
-			url: "http://192.168.43.25:8100/cebest/careersclear",
+			url: conf.url+"/cebest/careersclear",
 			data: {
 				"rid": rid
 			},
@@ -163,9 +164,9 @@ class Careers extends Component {
 		}
 		
 		var str = arr.join("?")
-$.ajax({
+		$.ajax({
 			type: "post",
-			url: "http://192.168.43.25:8100/cebest/careerdlp",
+			url: conf.url+"/cebest/careerdlp",
 			data: {
 				"titlea": str,
 				"rid": index
@@ -198,9 +199,9 @@ $.ajax({
 		}
 		
 		var str = arr.join("?")
-$.ajax({
+		$.ajax({
 			type: "post",
-			url: "http://192.168.43.25:8100/cebest/careerdlp2",
+			url: conf.url+"/cebest/careerdlp2",
 			data: {
 				"titleb": str,
 				"rid": index
@@ -242,7 +243,7 @@ $.ajax({
 			var str = arr.join("?")
 			$.ajax({
 			type: "post",
-			url: "http://192.168.43.25:8100/cebest/careerhq1",
+			url: conf.url+"/cebest/careerhq1",
 			data: {
 				"titlea": str,
 				"rid": this.state.addid
@@ -264,7 +265,7 @@ $.ajax({
 			var str = arr.join("?")
 			$.ajax({
 			type: "post",
-			url: "http://192.168.43.25:8100/cebest/careerhq2",
+			url: conf.url+"/cebest/careerhq2",
 			data: {
 				"titleb": str,
 				"rid": this.state.addid

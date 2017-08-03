@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import $ from 'jquery';
+import conf from './../config';
 
 class Contact extends Component {
 	constructor() {
@@ -20,7 +21,7 @@ class Contact extends Component {
 		{ /* 案例列表一*/ }
 		$.ajax({
 			type: "get",
-			url: "http://192.168.43.25:8100/cebest/contact",
+			url: conf.url+"/cebest/contact",
 			async: true,
 			contentType: false,
 			processData: false,
@@ -57,7 +58,7 @@ class Contact extends Component {
 	upsat = function() {
 		$.ajax({
 			type: "post",
-			url: "http://192.168.43.25:8100/cebest/upcontact",
+			url: conf.url+"/cebest/upcontact",
 			data: {
 				"id": this.state.cas,
 				"con": $("#fetext").val()

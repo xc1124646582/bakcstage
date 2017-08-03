@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import $ from 'jquery';
+import conf from './../config';
 
 class Careers2 extends Component {
 	constructor() {
@@ -15,7 +16,7 @@ class Careers2 extends Component {
 	componentDidMount = function() {
 		$.ajax({
 			type: "get",
-			url: "http://192.168.43.25:8100/cebest/careers2",
+			url: conf.url+"/cebest/careers2",
 			async: true,
 			contentType: false,
 			processData: false,
@@ -41,7 +42,7 @@ class Careers2 extends Component {
 		console.log(fd)
 		$.ajax({
 			type: "post",
-			url: "http://192.168.43.25:8100/cebest/incareers2",
+			url: conf.url+"/cebest/incareers2",
 			async: true,
 			data: fd,
 			contentType: false,
@@ -50,7 +51,7 @@ class Careers2 extends Component {
 
 				$.ajax({
 					type: "post",
-					url: "http://192.168.43.25:8100/cebest/upcareers2img",
+					url: conf.url+"/cebest/upcareers2img",
 					data: {
 						"id": this.state.id
 					},
@@ -107,7 +108,7 @@ class Careers2 extends Component {
 		}
 		$.ajax({
 			type: "post",
-			url: "http://192.168.43.25:8100/cebest/upcareers2",
+			url: conf.url+"/cebest/upcareers2",
 			data: {
 				"id": this.state.id,
 				"title1": title1,

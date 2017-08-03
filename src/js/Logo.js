@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import $ from 'jquery';
+import conf from './../config';
 
 class Logo extends Component {
 	constructor() {
@@ -12,7 +13,7 @@ class Logo extends Component {
 	componentDidMount = function() {
 			$.ajax({
 			type: "get",
-			url: "http://192.168.43.25:8100/cebest/logos",
+			url: conf.url+"/cebest/logos",
 			async: true,
 			contentType: false,
 			processData: false,
@@ -37,7 +38,7 @@ class Logo extends Component {
 		console.log(fd)
 		$.ajax({
 			type: "post",
-			url: "http://192.168.43.25:8100/cebest/inlogo",
+			url: conf.url+"/cebest/inlogo",
 			async: true,
 			data: fd,
 			contentType: false,
@@ -46,7 +47,7 @@ class Logo extends Component {
 				
 				$.ajax({
 				type: "post",
-				url: "http://192.168.43.25:8100/cebest/uplogo",
+				url: conf.url+"/cebest/uplogo",
 				data: {
 				"id": element.id
 				},

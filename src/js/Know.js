@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import $ from 'jquery';
+import conf from './../config';
 
 class Know extends Component {
 	constructor() {
@@ -18,7 +19,7 @@ class Know extends Component {
 	componentDidMount = function() {
 		$.ajax({
 			type: "get",
-			url: "http://192.168.43.25:8100/cebest/know",
+			url: conf.url+"/cebest/know",
 			async: true,
 			contentType: false,
 			processData: false,
@@ -58,7 +59,7 @@ class Know extends Component {
 		console.log(fd)
 		$.ajax({
 			type: "post",
-			url: "http://192.168.43.25:8100/cebest/inknow",
+			url: conf.url+"/cebest/inknow",
 			async: true,
 			data: fd,
 			contentType: false,
@@ -67,7 +68,7 @@ class Know extends Component {
 				if(element.id=="knimg"){
 				$.ajax({
 				type: "post",
-				url: "http://192.168.43.25:8100/cebest/know1",
+				url: conf.url+"/cebest/know1",
 				data: {
 				"id": this.state.cpid
 				},
@@ -109,7 +110,7 @@ knups=function(){
 	
 			$.ajax({
 				type: "post",
-				url: "http://192.168.43.25:8100/cebest/know2",
+				url: conf.url+"/cebest/know2",
 				data: {
 				"id": this.state.cpid,
 				"tit":tit
@@ -151,7 +152,7 @@ this.setState({
 	})
 			$.ajax({
 				type: "post",
-				url: "http://192.168.43.25:8100/cebest/knowac",
+				url: conf.url+"/cebest/knowac",
 				data: {
 				"id": id
 				},
@@ -208,8 +209,11 @@ kn2fp=function(){
 	if($("#kndars").val()!=""&& this.refs.kn2img.files[0] != undefined){
 			$.ajax({
 				type: "post",
-				url: "http://192.168.43.25:8100/cebest/knowins",
-data: {"con": this.state.index,"tit":$("#kndars").val()},
+				url: conf.url+"/cebest/knowins",
+				data: {
+					"con": this.state.index,
+					"tit":$("#kndars").val()
+				},
 				success: function(e) {
 					this.setState({
 						know1:[],
@@ -265,7 +269,7 @@ knupfs=function(event){
 	$(".knbox3").css("display","none")
 			$.ajax({
 				type: "post",
-				url: "http://192.168.43.25:8100/cebest/knowacf",
+				url: conf.url+"/cebest/knowacf",
 				data: {
 				"con": this.state.index,
 				"h2":$("#knfsts").val()
