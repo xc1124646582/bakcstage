@@ -148,7 +148,7 @@ class App extends Component {
    <div className="home">
     <Home></Home>
   </div>
-  <p>啊实打实的</p>
+  <p  className="ye1">中企高呈后台管理中心</p>
 </div>
       </div>
     );
