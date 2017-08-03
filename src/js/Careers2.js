@@ -47,36 +47,21 @@ class Careers2 extends Component {
 			contentType: false,
 			processData: false,
 			success: function(e) {
-			
-			$.ajax({
-			type: "post",
-			url: "http://localhost:8100/cebest/upcareers2img",
-			data: {"id": this.state.id},
-			success: function(e) {
-				alert(e)
-			}.bind(this),
-			error: function() {
-				console.log("666")
+				$.ajax({
+					type: "post",
+					url: "http://192.168.43.25:8100/cebest/upcareers2img",
+					data: {
+						"id": this.state.id
+					},
+					success: function(e) {
+						
+					}.bind(this),
+					error: function() {
+						console.log("666")
+					}
+				});
 			}
-		});
-
-
-		$.ajax({
-			type: "post",
-			url: "http://192.168.43.25:8100/cebest/upcareers2img",
-			data: {
-				"id": this.state.id
-			},
-			success: function(e) {
-				
-			}.bind(this),
-
-
-			error: function() {
-				console.log("666")
-			}
-		});
-
+		})
 	}.bind(this)
 
 	faser = function(event) {

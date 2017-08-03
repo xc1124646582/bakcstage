@@ -40,7 +40,7 @@ class Gengduo extends Component {
 		console.log(fd)
 		$.ajax({
 			type: "post",
-			url: "http://localhost:8100/cebest/ingengduo",
+			url: "http://192.168.43.25:8100/cebest/ingengduo",
 			async: true,
 			data: fd,
 			contentType: false,
@@ -48,7 +48,7 @@ class Gengduo extends Component {
 			success: function(e) {
 				$.ajax({
 					type: "post",
-					url: "http://localhost:8100/cebest/gengduoaa",
+					url: "http://192.168.43.25:8100/cebest/gengduoaa",
 					data: {
 						"id": this.state.id
 					},
@@ -99,7 +99,7 @@ gdups=function(){
 		}
 					$.ajax({
 					type: "post",
-					url: "http://localhost:8100/cebest/gengduobb",
+					url: "http://192.168.43.25:8100/cebest/gengduobb",
 					data: {
 						"id": this.state.id,
 						"title1":title1,
@@ -134,7 +134,7 @@ sc=function(event){
 		var str = arr.join("?")
 		$.ajax({
 			type: "post",
-			url: "http://localhost:8100/cebest/gengduocs",
+			url: "http://192.168.43.25:8100/cebest/gengduocs",
 			data: {
 				"sumary": str,
 				"id": id
@@ -170,7 +170,7 @@ gdacc = function(event) {
 			var str = arr.join("?")
 			$.ajax({
 				type: "post",
-				url: "http://localhost:8100/cebest/gengduocs",
+				url: "http://192.168.43.25:8100/cebest/gengduocs",
 				data: {
 				"sumary": str,
 				"id": this.state.addid

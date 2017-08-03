@@ -18,7 +18,7 @@ class Know extends Component {
 	componentDidMount = function() {
 		$.ajax({
 			type: "get",
-			url: "http://localhost:8100/cebest/know",
+			url: "http://192.168.43.25:8100/cebest/know",
 			async: true,
 			contentType: false,
 			processData: false,
@@ -54,7 +54,7 @@ class Know extends Component {
 		console.log(fd)
 		$.ajax({
 			type: "post",
-			url: "http://localhost:8100/cebest/inknow",
+			url: "http://192.168.43.25:8100/cebest/inknow",
 			async: true,
 			data: fd,
 			contentType: false,
@@ -63,7 +63,7 @@ class Know extends Component {
 				if(element.id=="knimg"){
 				$.ajax({
 				type: "post",
-				url: "http://localhost:8100/cebest/know1",
+				url: "http://192.168.43.25:8100/cebest/know1",
 				data: {
 				"id": this.state.cpid
 				},
@@ -96,7 +96,7 @@ knclear=function(){
 knups=function(){
 			$.ajax({
 				type: "post",
-				url: "http://localhost:8100/cebest/know2",
+				url: "http://192.168.43.25:8100/cebest/know2",
 				data: {
 				"id": this.state.cpid,
 				"tit":$("#kntexts").val()
@@ -138,7 +138,7 @@ this.setState({
 	})
 			$.ajax({
 				type: "post",
-				url: "http://localhost:8100/cebest/knowac",
+				url: "http://192.168.43.25:8100/cebest/knowac",
 				data: {
 				"id": id
 				},
@@ -194,7 +194,7 @@ kn2fo=function(){
 kn2fp=function(){
 	$.ajax({
 				type: "post",
-				url: "http://localhost:8100/cebest/knowins",
+				url: "http://192.168.43.25:8100/cebest/knowins",
 data: {"con": this.state.index,"tit":$("#kndars").val()},
 				success: function(e) {
 					this.setState({

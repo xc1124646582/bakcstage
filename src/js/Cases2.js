@@ -78,11 +78,7 @@ class Cases2 extends Component {
 		console.log(fd)
 		$.ajax({
 			type: "post",
-<<<<<<< HEAD
 			url: "http://192.168.43.25:8100/cebest/incases1",
-=======
-			url: "http://localhost:8100/cebest/incases1a",
->>>>>>> origin/master
 			async: true,
 			data: fd,
 			contentType: false,
@@ -106,11 +102,8 @@ class Cases2 extends Component {
 		}
 		var imgsrc = imgen.split("/")[imgen.split("/").length - 1]
 		console.log(imgsrc) 
-<<<<<<< HEAD
+
 		/*删除*/
-=======
-		{ /* 删除*/ }
->>>>>>> origin/master
 		$.ajax({
 			type: "post",
 			url: "http://192.168.43.25:8100/cebest/dlcases2",
@@ -182,16 +175,11 @@ class Cases2 extends Component {
 	upfns2 = function(event) {
 		$.ajax({
 			type: "post",
-<<<<<<< HEAD
 			url: "http://192.168.43.25:8100/cebest/upscases2",
 			data: {
 				"id": this.state.upes,
 				"title1": $("#huper1").val()
 			},
-=======
-			url: "http://localhost:8100/cebest/casestext1",
-			data: {"id": this.state.upes,"title1": $("#huper1").val()},
->>>>>>> origin/master
 			success: function(e) {
 				alert(e)
 			}.bind(this),
@@ -204,16 +192,11 @@ class Cases2 extends Component {
 		alert(this.state.upes)
 		$.ajax({
 			type: "post",
-<<<<<<< HEAD
 			url: "http://192.168.43.25:8100/cebest/upscases3",
 			data: {
 				"id": this.state.upes,
 				"title2": $("#huper2").val()
 			},
-=======
-			url: "http://localhost:8100/cebest/casestext2",
-			data: {"id": this.state.upes,"title2": $("#huper2").val()},
->>>>>>> origin/master
 			success: function(e) {
 				alert(e)
 			}.bind(this),
