@@ -15,7 +15,7 @@ class Careers extends Component {
 	componentDidMount = function() {
 		$.ajax({
 			type: "get",
-			url: "http://localhost:8100/cebest/careers",
+			url: "http://192.168.43.25:8100/cebest/careers",
 			async: true,
 			contentType: false,
 			processData: false,
@@ -64,7 +64,7 @@ class Careers extends Component {
 			if(strs1.length <= 253 && strs2.length <= 253) {
 				$.ajax({
 					type: "post",
-					url: "http://localhost:8100/cebest/careersup",
+					url: "http://192.168.43.25:8100/cebest/careersup",
 					data: {
 						"work": $("#work1").val(),
 						"duty": $("#work2").val(),
@@ -81,7 +81,7 @@ class Careers extends Component {
 						$(".textbox").css("display", "none")
 						$.ajax({
 							type: "get",
-							url: "http://localhost:8100/cebest/careers",
+							url: "http://192.168.43.25:8100/cebest/careers",
 							async: true,
 							contentType: false,
 							processData: false,
@@ -124,7 +124,7 @@ class Careers extends Component {
 		} { /* 删除*/ }
 		$.ajax({
 			type: "post",
-			url: "http://localhost:8100/cebest/careersclear",
+			url: "http://192.168.43.25:8100/cebest/careersclear",
 			data: {
 				"rid": rid
 			},
@@ -165,7 +165,7 @@ class Careers extends Component {
 		var str = arr.join("?")
 $.ajax({
 			type: "post",
-			url: "http://localhost:8100/cebest/careerdlp",
+			url: "http://192.168.43.25:8100/cebest/careerdlp",
 			data: {
 				"titlea": str,
 				"rid": index
@@ -200,7 +200,7 @@ $.ajax({
 		var str = arr.join("?")
 $.ajax({
 			type: "post",
-			url: "http://localhost:8100/cebest/careerdlp2",
+			url: "http://192.168.43.25:8100/cebest/careerdlp2",
 			data: {
 				"titleb": str,
 				"rid": index
@@ -242,7 +242,7 @@ $.ajax({
 			var str = arr.join("?")
 			$.ajax({
 			type: "post",
-			url: "http://localhost:8100/cebest/careerhq1",
+			url: "http://192.168.43.25:8100/cebest/careerhq1",
 			data: {
 				"titlea": str,
 				"rid": this.state.addid
@@ -264,7 +264,7 @@ $.ajax({
 			var str = arr.join("?")
 			$.ajax({
 			type: "post",
-			url: "http://localhost:8100/cebest/careerhq2",
+			url: "http://192.168.43.25:8100/cebest/careerhq2",
 			data: {
 				"titleb": str,
 				"rid": this.state.addid

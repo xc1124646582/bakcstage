@@ -15,7 +15,7 @@ class Careers2 extends Component {
 	componentDidMount = function() {
 		$.ajax({
 			type: "get",
-			url: "http://localhost:8100/cebest/careers2",
+			url: "http://192.168.43.25:8100/cebest/careers2",
 			async: true,
 			contentType: false,
 			processData: false,
@@ -41,13 +41,13 @@ class Careers2 extends Component {
 		console.log(fd)
 		$.ajax({
 			type: "post",
-			url: "http://localhost:8100/cebest/incareers2",
+			url: "http://192.168.43.25:8100/cebest/incareers2",
 			async: true,
 			data: fd,
 			contentType: false,
 			processData: false,
 			success: function(e) {
-<<<<<<< HEAD
+
 				$.ajax({
 					type: "post",
 					url: "http://192.168.43.25:8100/cebest/upcareers2img",
@@ -61,23 +61,9 @@ class Careers2 extends Component {
 						console.log("666")
 					}
 				});
-=======
-			
-			$.ajax({
-			type: "post",
-			url: "http://localhost:8100/cebest/upcareers2img",
-			data: {"id": this.state.id},
-			success: function(e) {
-				alert(e)
 			}.bind(this),
 			error: function() {
 				console.log("666")
-			}
-		});
-			}.bind(this),
-			error: function() {
-				console.log("666")
->>>>>>> origin/master
 			}
 		})
 	}.bind(this)
@@ -121,7 +107,7 @@ class Careers2 extends Component {
 		}
 		$.ajax({
 			type: "post",
-			url: "http://localhost:8100/cebest/upcareers2",
+			url: "http://192.168.43.25:8100/cebest/upcareers2",
 			data: {
 				"id": this.state.id,
 				"title1": title1,
@@ -145,9 +131,9 @@ class Careers2 extends Component {
 	render() {
 		return(
 			<div className="careers2">
-<p className="titles">hahahah </p>
-<div className="careers2-box">
-<ul>{this.state.careers2.map(function(v,i){
+		<p className="titles">人才 </p>
+		<div className="careers2-box">
+		<ul>{this.state.careers2.map(function(v,i){
 					return <li key={i+1}>
 					<span>{v.id}</span> 
 					<span><img src={v.img} /></span>    

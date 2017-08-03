@@ -100,7 +100,7 @@ class App extends Component {
   </ul>   
   <h2><a><span className="icon-pencil-square-o"></span>栏目管理</a></h2>
   <ul>
-    <li><a><span className="icon-caret-right"></span>内容管理</a></li>
+    {/*<li><a><span className="icon-caret-right"></span>内容管理</a></li>*/}
     <li id="home"><a><span className="icon-caret-right"></span>栏目管理</a></li>
     <li id="logo"><a><span className="icon-caret-right"></span>LOGO管理</a></li> 
     <li id="cases"><a><span className="icon-caret-right"></span>案例一</a></li>   

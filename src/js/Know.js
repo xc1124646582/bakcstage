@@ -265,7 +265,7 @@ knupfs=function(event){
 	$(".knbox3").css("display","none")
 			$.ajax({
 				type: "post",
-				url: "http://localhost:8100/cebest/knowacf",
+				url: "http://192.168.43.25:8100/cebest/knowacf",
 				data: {
 				"con": this.state.index,
 				"h2":$("#knfsts").val()

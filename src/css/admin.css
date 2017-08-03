@@ -81,7 +81,7 @@ ul,li {
 }
 
 
-/********头部******/
+/*头部*/
 
 .header {
 	height: 70px;
@@ -172,13 +172,12 @@ ul,li {
 	margin-right: 8px;
 }
 
-.leftnav ul li a:hover,
-.leftnav ul li a.on {
+.leftnav ul li a:hover,.leftnav ul li a.on {
 	color: #09c;
 }
 
 
-/***主要内容***/
+/*主要内容*/
 
 .admin {
 	background: #fff;
@@ -303,8 +302,7 @@ ul,li {
 	text-align: center;
 }
 
-.pagelist span,
-.pagelist a {
+.pagelist span,.pagelist a {
 	border-radius: 3px;
 	border: 1px solid #dfdfdf;
 	display: inline-block;
@@ -357,8 +355,7 @@ ul,li {
 	background: #08bbe1;
 }
 
-input[type="checkbox"],
-input[type="radio"] {
+input[type="checkbox"],input[type="radio"] {
 	width: 15px;
 	height: 15px;
 	vertical-align: -3px;

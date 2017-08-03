@@ -12,7 +12,7 @@ class Home extends Component {
 		componentDidMount = function() {
 			$.ajax({
 			type: "get",
-			url: "http://localhost:8100/cebest/home",
+			url: "http://192.168.43.25:8100/cebest/home",
 			async: true,
 			contentType: false,
 			processData: false,
@@ -56,7 +56,7 @@ homeups=function(){
 		console.log(tita,titEn)
 			$.ajax({
 				type: "post",
-				url: "http://localhost:8100/cebest/homeac",
+				url: "http://192.168.43.25:8100/cebest/homeac",
 data: {"id": this.state.id,"tita":tita,"titEn":titEn},
 				success: function(e) {
 					this.setState({

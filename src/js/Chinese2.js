@@ -14,7 +14,7 @@ class Chinese2 extends Component {
 	componentDidMount = function() {
 		$.ajax({
 			type: "get",
-			url: "http://localhost:8100/cebest/chinese2",
+			url: "http://192.168.43.25:8100/cebest/chinese2",
 			async: true,
 			contentType: false,
 			processData: false,
@@ -40,7 +40,7 @@ class Chinese2 extends Component {
 		console.log(fd)
 		$.ajax({
 			type: "post",
-			url: "http://localhost:8100/cebest/incases1",
+			url: "http://192.168.43.25:8100/cebest/incases1",
 			async: true,
 			data: fd,
 			contentType: false,
@@ -49,7 +49,7 @@ class Chinese2 extends Component {
 
 				$.ajax({
 					type: "post",
-					url: "http://localhost:8100/cebest/chinese2img",
+					url: "http://192.168.43.25:8100/cebest/chinese2img",
 					data: {
 						"id": this.state.id
 					},
@@ -98,7 +98,7 @@ class Chinese2 extends Component {
 		}
 		$.ajax({
 			type: "post",
-			url: "http://localhost:8100/cebest/upchinese2",
+			url: "http://192.168.43.25:8100/cebest/upchinese2",
 			data: {
 				"id": this.state.id,
 				"title1": title1,
@@ -135,7 +135,7 @@ class Chinese2 extends Component {
 		var str = arr.join("?")
 		$.ajax({
 			type: "post",
-			url: "http://localhost:8100/cebest/upschinese2",
+			url: "http://192.168.43.25:8100/cebest/upschinese2",
 			data: {
 				"cons": str,
 				"id": id
@@ -166,7 +166,7 @@ class Chinese2 extends Component {
 			var str = arr.join("?")
 			$.ajax({
 				type: "post",
-				url: "http://localhost:8100/cebest/upschinese2",
+				url: "http://192.168.43.25:8100/cebest/upschinese2",
 				data: {
 					"cons": str,
 					"id": this.state.addid

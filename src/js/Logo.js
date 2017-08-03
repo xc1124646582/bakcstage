@@ -12,7 +12,7 @@ class Logo extends Component {
 	componentDidMount = function() {
 			$.ajax({
 			type: "get",
-			url: "http://localhost:8100/cebest/logos",
+			url: "http://192.168.43.25:8100/cebest/logos",
 			async: true,
 			contentType: false,
 			processData: false,
@@ -37,7 +37,7 @@ class Logo extends Component {
 		console.log(fd)
 		$.ajax({
 			type: "post",
-			url: "http://localhost:8100/cebest/inlogo",
+			url: "http://192.168.43.25:8100/cebest/inlogo",
 			async: true,
 			data: fd,
 			contentType: false,
@@ -46,7 +46,7 @@ class Logo extends Component {
 				
 				$.ajax({
 				type: "post",
-				url: "http://localhost:8100/cebest/uplogo",
+				url: "http://192.168.43.25:8100/cebest/uplogo",
 				data: {
 				"id": element.id
 				},
