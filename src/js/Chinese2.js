@@ -3,6 +3,7 @@ import $ from 'jquery';
 import conf from './../config';
 
 class Chinese2 extends Component {
+	/*初始化状态*/
 	constructor() {
 		super();
 		this.state = {
@@ -13,6 +14,7 @@ class Chinese2 extends Component {
 		}
 	};
 	componentDidMount = function() {
+		/*初始化页面数据*/
 		$.ajax({
 			type: "get",
 			url: conf.url+"/cebest/chinese2",
@@ -31,6 +33,7 @@ class Chinese2 extends Component {
 			}
 		});
 	}
+	/*上传图片*/
 	setFiles = function(element) {
 		console.log(element)
 		var files = []
@@ -47,7 +50,7 @@ class Chinese2 extends Component {
 			contentType: false,
 			processData: false,
 			success: function(e) {
-
+				/*修改图片*/
 				$.ajax({
 					type: "post",
 					url: conf.url+"/cebest/chinese2img",
@@ -69,20 +72,25 @@ class Chinese2 extends Component {
 		});
 
 	}.bind(this)
+	/* 点击修改 */
 	chers = function(event) {
 		$(".chin2fix").css("display", "block")
+		/*获取修改的id*/
 		var aa = event.target
 		var id = aa.parentElement.firstElementChild.innerHTML
 		this.setState({
 			id: id
 		})
 	}.bind(this)
+	/* 点击修改框的 取消*/
 	clearfn = function() {
 		$(".chin2fix").css("display", "none")
 	}
+	/* 点击 确定 上传数据*/
 	carups = function() {
 		var title1 = $("#titl1").val()
 		var title2 = $("#titl2").val()
+		/*判断 是否 修改了数据*/
 		if($("#titl1").val() == "") {
 			for(var i = 0; i < this.state.chinese2.length; i++) {
 				if(this.state.chinese2[i].id == this.state.id) {
@@ -97,6 +105,7 @@ class Chinese2 extends Component {
 				}
 			}
 		}
+		/*把修改后的数据传入后台*/
 		$.ajax({
 			type: "post",
 			url: conf.url+"/cebest/upchinese2",
@@ -107,6 +116,7 @@ class Chinese2 extends Component {
 			},
 			success: function(e) {
 				console.log(e)
+				/*更新数据*/
 				this.setState({
 					chinese2: e
 				})
@@ -119,10 +129,13 @@ class Chinese2 extends Component {
 			}
 		});
 	}.bind(this)
+	/*点击删除*/
 	chinclearfn = function(event) {
 		var arr = []
+		/*查找要删除数据的位置*/
 		var id = event.target.parentElement.parentElement.parentElement.firstElementChild.innerHTML
 		var text = event.target.parentElement.firstElementChild.innerHTML
+		/*处理数据*/
 		for(var i = 0; i < this.state.chinese2.length; i++) {
 			if(this.state.chinese2[i].id == id) {
 				arr = this.state.chinese2[i].cons.split("?")
@@ -134,6 +147,7 @@ class Chinese2 extends Component {
 			}
 		}
 		var str = arr.join("?")
+		/*返回一个新的数据  发送到后台*/
 		$.ajax({
 			type: "post",
 			url: conf.url+"/cebest/upschinese2",
@@ -142,6 +156,7 @@ class Chinese2 extends Component {
 				"id": id
 			},
 			success: function(e) {
+				/*更新数据*/
 				this.setState({
 					chinese2: e
 				})
@@ -151,20 +166,27 @@ class Chinese2 extends Component {
 			}
 		});
 	}.bind(this)
+	/*点击增加*/
 	addfn = function(event) {
+		/*弹出增加框*/
 		$(".homes").css("display", "block")
+		/*获取增加的位置*/
 		var id = event.target.parentElement.parentElement.parentElement.firstElementChild.innerHTML
 		this.setState({
 			addid: id
 		})
 	}.bind(this)
+	/*点击确定*/
 	clearsn = function(event) {
+		/*判断 是否输入*/
 		if($("#texten").val() != "") {
+			$(".chinred").css("display","none")
 			$(".homes").css("display", "none")
 			var arr = []
 			arr = this.state.chinese2[this.state.addid - 1].cons.split("?")
 			arr.push($("#texten").val())
 			var str = arr.join("?")
+			/*把得到的新数据 发送后台*/
 			$.ajax({
 				type: "post",
 				url: conf.url+"/cebest/upschinese2",
@@ -182,10 +204,14 @@ class Chinese2 extends Component {
 					console.log("666")
 				}
 			});
+		}else{
+			$(".chinred").css("display","block")
 		}
 	}.bind(this)
+	/*点击取消*/
 	ensclear = function() {
 		$(".homes").css("display", "none")
+		$(".chinred").css("display","none")
 	}
 	render() {
 		return(
@@ -215,8 +241,9 @@ class Chinese2 extends Component {
 	        		</div>	
         			<div className="homes">
 	        			<div>
-				        	<h2>修改</h2>
+				        	<h2>增加</h2>
 				        	<p><input type="text" id="texten"/></p>
+				        	<p className="chinred">请输入完整</p>
 				        	<p><button onClick={this.clearsn}>确定</button> <button onClick={this.ensclear}>取消</button></p>
 	        			</div>
 		        	</div>

@@ -3,6 +3,7 @@ import $ from 'jquery';
 import conf from './../config';
 
 class Careers extends Component {
+	/* 状态初始化*/
 	constructor() {
 		super();
 		this.state = {
@@ -13,7 +14,9 @@ class Careers extends Component {
 			reps:null
 		}
 	};
+	/* 加载完成*/
 	componentDidMount = function() {
+		/* 初始化页面数据*/
 		$.ajax({
 			type: "get",
 			url: conf.url+"/cebest/careers",
@@ -31,10 +34,13 @@ class Careers extends Component {
 			}
 		});
 	}
+	/* 点击添加*/
 	update = function() {
 		$(".textbox").css("display", "block")
 	}.bind(this)
+	/* 点击确定 上传数据 添加职位*/
 	upns = function() {
+		/* 职位不能为空*/
 		if($("#work1").val() != "" && $("#work2").val() != "") {
 			var aas1 = []
 			for(var i = 0; i < $(".work3 input").length; i++) {
@@ -63,6 +69,7 @@ class Careers extends Component {
 			console.log(strs2)
 
 			if(strs1.length <= 253 && strs2.length <= 253) {
+				/* 向后台传入数据*/
 				$.ajax({
 					type: "post",
 					url: conf.url+"/cebest/careersup",
@@ -74,12 +81,13 @@ class Careers extends Component {
 					},
 					success: function(e) {
 						alert(e)
-
+						/*上传成功后 更新页面*/
 						$("#work1").val("")
 						$("#work2").val("")
 						$(".work3 input").val("")
 						$(".work4 input").val("")
 						$(".textbox").css("display", "none")
+						/*更新页面数据*/
 						$.ajax({
 							type: "get",
 							url: conf.url+"/cebest/careers",
@@ -111,10 +119,13 @@ class Careers extends Component {
 		}
 
 	}.bind(this)
+	/*点击取消*/
 	ends = function() {
 		$(".textbox").css("display", "none")
 	}
+	/*删除*/
 	clearworkfn = function(event) {
+		/*获取点击的id*/
 		var aa = event.target
 		var rid = null
 		var work = aa.parentElement.parentElement.firstElementChild.innerHTML
@@ -131,6 +142,7 @@ class Careers extends Component {
 			},
 			success: function(e) {
 				alert(e)
+				/* 截取掉删除掉的数据     更新状态*/
 				for(var i in this.state.work) {
 					if(this.state.work[i].rid == rid) {
 						var bb = this.state.work.splice(i, 1)
@@ -146,11 +158,14 @@ class Careers extends Component {
 		});
 
 	}.bind(this)
+	/*删除*/
 	carssn=function(event){
 		var arr = []
+		/*获取要删除数据的位置*/
 		var id = event.target.parentElement.parentElement.parentElement.parentElement.firstElementChild.innerHTML
 		var text = event.target.parentElement.firstElementChild.innerHTML
 		var index=null
+		/* 获取原来的数据 并处理*/
 		for(var i=0;i<this.state.work.length;i++){
 			if(this.state.work[i].work==id){
 				index=this.state.work[i].rid
@@ -162,7 +177,7 @@ class Careers extends Component {
 				arr.splice(j, 1)
 			}
 		}
-		
+		/*获取一个新的字符串*/
 		var str = arr.join("?")
 		$.ajax({
 			type: "post",
@@ -181,11 +196,14 @@ class Careers extends Component {
 			}
 		});
 	}.bind(this)
+	/*删除title2*/
 	carssn2=function(event){
 				var arr = []
+				/*查找要删除的id*/
 		var id = event.target.parentElement.parentElement.parentElement.parentElement.firstElementChild.innerHTML
 		var text = event.target.parentElement.firstElementChild.innerHTML
 		var index=null
+		/*处理原来的数据*/
 		for(var i=0;i<this.state.work.length;i++){
 			if(this.state.work[i].work==id){
 				index=this.state.work[i].rid
@@ -199,6 +217,7 @@ class Careers extends Component {
 		}
 		
 		var str = arr.join("?")
+		/*获得删除后的数据 并传入后台*/
 		$.ajax({
 			type: "post",
 			url: conf.url+"/cebest/careerdlp2",
@@ -216,8 +235,10 @@ class Careers extends Component {
 			}
 		});
 	}.bind(this)
+	/*点击删除*/
 	upcarss1=function(event){
 		$(".cllearboxs").css("display","block")
+		/*获取要增加数据的id*/
 		var id = event.target.parentElement.parentElement.parentElement.firstElementChild.innerHTML
 		var index
 		for(var i=0;i<this.state.work.length;i++){
@@ -232,13 +253,24 @@ class Careers extends Component {
 			reps:event.target.id
 		})
 	}.bind(this)
+	/*点击取消*/
 	carcnn=function(){
 		$(".cllearboxs").css("display","none")
 	}
+	/* 点击确定后 上传增加后的数据*/
 	carqds=function(){
-		if(this.state.reps=="btns1"){
+		/*判断不能为空*/
+		if($("#carval").val()!=""){
+			$(".cored").css("display","none")
+			/*判断增加的位置*/
+				if(this.state.reps=="btns1"){
 			var arr = []
-			arr = this.state.work[this.state.addid-1].titlea.split("?")
+			for(var i=0;i<this.state.work.length;i++){
+				if(this.state.work[i].rid==this.state.addid){
+					arr = this.state.work[i].titlea.split("?")
+				}
+			}
+			/*处理数据  获得增加后的数据*/
 			arr.push($("#carval").val())
 			var str = arr.join("?")
 			$.ajax({
@@ -252,17 +284,25 @@ class Careers extends Component {
 				this.setState({
 					work: e
 				})
+				$("#carval").val("")
 				$(".cllearboxs").css("display","none")
 			}.bind(this),
 			error: function() {
 				console.log("失败了")
 			}
 		});
-		}else if(this.state.reps=="btns2"){
+		}
+		else if(this.state.reps=="btns2"){
 			var arr = []
-			arr = this.state.work[this.state.addid-1].titlea.split("?")
+			for(var i=0;i<this.state.work.length;i++){
+				if(this.state.work[i].rid==this.state.addid){
+					arr = this.state.work[i].titleb.split("?")
+				}
+			}
+			/*处理数据  获得增加后的数据*/
 			arr.push($("#carval").val())
 			var str = arr.join("?")
+			console.log(str)
 			$.ajax({
 			type: "post",
 			url: conf.url+"/cebest/careerhq2",
@@ -274,13 +314,19 @@ class Careers extends Component {
 				this.setState({
 					work: e
 				})
+				$("#carval").val("")
 				$(".cllearboxs").css("display","none")
 			}.bind(this),
 			error: function() {
 				console.log("失败了")
 			}
 		});
+		}	
+		}else{
+			/*如果为空  提示*/
+			$(".cored").css("display","block")
 		}
+
 
 	}.bind(this)
 	render() {
@@ -327,6 +373,7 @@ class Careers extends Component {
 <div>
 <h2>添加</h2>
 <p><input tupe="text" id="carval"/></p>
+<p className="cored">不能为空</p>
 <p><button onClick={this.carqds}>确定</button> <button onClick={this.carcnn}>取消</button></p>
 </div>
 </div>

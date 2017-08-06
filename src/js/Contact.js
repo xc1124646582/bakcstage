@@ -3,6 +3,7 @@ import $ from 'jquery';
 import conf from './../config';
 
 class Contact extends Component {
+	/* 初始化状态*/
 	constructor() {
 		super();
 		this.state = {
@@ -18,7 +19,8 @@ class Contact extends Component {
 		}
 	};
 	componentDidMount() {
-		{ /* 案例列表一*/ }
+		
+		/* 初始化页面数据*/
 		$.ajax({
 			type: "get",
 			url: conf.url+"/cebest/contact",
@@ -44,24 +46,33 @@ class Contact extends Component {
 		});
 
 	};
-
+/* 点击取消*/
 	clearfn = function() {
 		$(".fixs").css("display", "none")
 	}
+	/* 点击修改  显示输入框*/
 	fixeds = function(event) {
 		$(".fixs").css("display", "block")
 		var cid = event.target.parentElement.className
+		/* 获取 学要修改的id*/
 		this.setState({
 			cas: cid
 		})
 	}.bind(this)
+	/*点击确认按钮*/
 	upsat = function() {
+		var texts = $("#fetext").val()
+		var aa=null
+		if($("#fetext").val() == "") {
+			aa=this.state[this.state.cas]
+			texts=aa
+		}
 		$.ajax({
 			type: "post",
 			url: conf.url+"/cebest/upcontact",
 			data: {
 				"id": this.state.cas,
-				"con": $("#fetext").val()
+				"con": texts
 			},
 			success: function(e) {
 				this.setState({
@@ -76,7 +87,6 @@ class Contact extends Component {
 				})
 				$("#fetext").val("")
 				$(".fixs").css("display", "none")
-				alert("修改成功")
 			}.bind(this),
 			error: function() {
 				console.log("666")

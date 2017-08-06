@@ -3,6 +3,7 @@ import $ from 'jquery';
 import conf from './../config';
 
 class Gengduo extends Component {
+	/* 初始化数据*/
 	constructor() {
 		super();
 		this.state = {
@@ -12,6 +13,7 @@ class Gengduo extends Component {
 		}
 	};
 	componentDidMount = function() {
+		/*更新页面数据*/
 		$.ajax({
 			type: "get",
 			url: conf.url+"/cebest/gengduo",
@@ -30,7 +32,7 @@ class Gengduo extends Component {
 			}
 		});
 	}
-	
+	/*上传图片*/
 	setFiles = function(element) {
 		console.log(element)
 		var files = []
@@ -47,6 +49,7 @@ class Gengduo extends Component {
 			contentType: false,
 			processData: false,
 			success: function(e) {
+				/*上传 要修改的图片*/
 				$.ajax({
 					type: "post",
 					url: conf.url+"/cebest/gengduoaa",
@@ -69,7 +72,7 @@ class Gengduo extends Component {
 	}.bind(this)
 
 
-	
+	/*点击修改  获取要修改的id   并弹窗*/
 herfs=function(event){
 	$(".gdfixed").css("display","block")
 		var aa = event.target
@@ -78,12 +81,16 @@ herfs=function(event){
 			id: id
 		})
 }.bind(this)
+/* 点击取消*/
 gdclear=function(){
 	$(".gdfixed").css("display","none")
 }
+/*点击确定*/
 gdups=function(){
+	/*查看文本框   是否 需要修改*/
 		var title1 = $("#gdtexta").val()
 		var title2 = $("#gdtextb").val()
+		/* 处理 数据  变 或者不变*/
 		if($("#gdtexta").val() == "") {
 			for(var i = 0; i < this.state.gengduo.length; i++) {
 				if(this.state.gengduo[i].id == this.state.id) {
@@ -91,6 +98,7 @@ gdups=function(){
 				}
 			}
 		}
+		/* 处理 数据  变 或者不变*/
 		if($("#gdtextb").val() == "") {
 			for(var i = 0; i < this.state.gengduo.length; i++) {
 				if(this.state.gengduo[i].id == this.state.id) {
@@ -98,6 +106,7 @@ gdups=function(){
 				}
 			}
 		}
+		/*修改后台数据*/
 					$.ajax({
 					type: "post",
 					url: conf.url+"/cebest/gengduobb",
@@ -118,8 +127,10 @@ gdups=function(){
 				});
 		$(".gdfixed").css("display","none")
 }.bind(this)
+/*点击删除*/
 sc=function(event){
 		var arr = []
+		/*获取要删除数据的位置*/
 		var id = event.target.parentElement.parentElement.parentElement.firstElementChild.innerHTML
 		var text = event.target.parentElement.firstElementChild.innerHTML
 		for(var i = 0; i < this.state.gengduo.length; i++) {
@@ -133,6 +144,7 @@ sc=function(event){
 			}
 		}
 		var str = arr.join("?")
+		/*把删除后的数据 传入后台  进行修改*/
 		$.ajax({
 			type: "post",
 			url: conf.url+"/cebest/gengduocs",
@@ -141,6 +153,7 @@ sc=function(event){
 				"id": id
 			},
 			success: function(e) {
+				/*更新数据*/
 				this.setState({
 					gengduo: e
 				})
@@ -150,19 +163,24 @@ sc=function(event){
 			}
 		});
 }.bind(this)
+/*点击增加*/
 addgd=function(event){
+	/*显示弹窗*/
 		$(".gengduobox").css("display", "block")
+		/*获取 要增加数据的位置*/
 		var id = event.target.parentElement.parentElement.parentElement.firstElementChild.innerHTML
 		this.setState({
 			addid: id
 		})
 		
 }.bind(this)
+/*点击取消   关闭弹窗*/
 gdclears=function(){
 	$(".gengduobox").css("display","none")
 }
-
+/*点击确定  上传数据*/
 gdacc = function(event) {
+	/* 判断 数据 是否填写完整*/
 		if($("#addva").val() != "") {
 			$(".gengduobox").css("display", "none")
 			var arr = []
@@ -178,6 +196,7 @@ gdacc = function(event) {
 				},
 				success: function(e) {
 					$("#addva").val("")
+					/*更新数据*/
 					this.setState({
 						gengduo: e
 					})
@@ -208,6 +227,7 @@ gdacc = function(event) {
 				</li>
 				}.bind(this))}</ul>		
 			</div>
+			{/* 修改弹窗*/}
 			<div className="gdfixed">
 			<div className="gdaa">
 							<h3>修改</h3>
@@ -217,6 +237,7 @@ gdacc = function(event) {
 				        	<p><button onClick={this.gdups}>确定</button><button onClick={this.gdclear}>取消</button></p>
 			</div>
 			</div>
+			{/* 增加的弹窗*/}
 			<div  className="gengduobox">
 			<div className="gengduodiv">
 			<h2>增加</h2>

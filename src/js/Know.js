@@ -3,6 +3,7 @@ import $ from 'jquery';
 import conf from './../config';
 
 class Know extends Component {
+	/*初始化状态*/
 	constructor() {
 		super();
 		this.state = {
@@ -17,6 +18,7 @@ class Know extends Component {
 		}
 	};
 	componentDidMount = function() {
+		/*初始化页面数据*/
 		$.ajax({
 			type: "get",
 			url: conf.url+"/cebest/know",
@@ -48,7 +50,7 @@ class Know extends Component {
 			}
 		});
 	}
-	
+	/*上传图片*/
 	setFiles = function(element) {
 		console.log(element)
 		var files = []
@@ -66,6 +68,7 @@ class Know extends Component {
 			processData: false,
 			success: function(e) {
 				if(element.id=="knimg"){
+				/* 修改时 上传图片*/
 				$.ajax({
 				type: "post",
 				url: conf.url+"/cebest/know1",
@@ -88,16 +91,20 @@ class Know extends Component {
 		});
 
 	}.bind(this)
+	/*点击修改*/
 ades=function(event){
+	/*获取要修改改的id*/
 	var id = event.target.parentElement.parentElement.firstElementChild.innerHTML
 	this.setState({
 		cpid:id
 	})
 	$(".knbox1").css("display","block")
 }.bind(this)
+/*点击取消  关闭 弹窗*/
 knclear=function(){
 	$(".knbox1").css("display","none")
 }
+/*点击修改确定按钮*/
 knups=function(){
 		var tit = $("#kntexts").val()
 		if($("#kntexts").val() == "") {
@@ -107,7 +114,7 @@ knups=function(){
 				}
 			}
 		}
-	
+	/*把要修改的数据传入后台*/
 			$.ajax({
 				type: "post",
 				url: conf.url+"/cebest/know2",
@@ -116,6 +123,7 @@ knups=function(){
 				"tit":tit
 				},
 				success: function(e) {
+					/*更新 并处理数据*/
 					this.setState({
 						know1:[],
 						know2:[],
@@ -145,11 +153,14 @@ knups=function(){
 				}
 			});
 }.bind(this)
+/*点击删除*/
 kndats=function(event){
+	/*获取要删除的 id*/
 var id = event.target.parentElement.parentElement.firstElementChild.innerHTML
 this.setState({
 		knsd:id
 	})
+/*删除后台数据*/
 			$.ajax({
 				type: "post",
 				url: conf.url+"/cebest/knowac",
@@ -157,6 +168,7 @@ this.setState({
 				"id": id
 				},
 				success: function(e) {
+					/*更新数据 并处理*/
 					this.setState({
 						know1:[],
 						know2:[],
@@ -185,8 +197,10 @@ this.setState({
 				}
 			});
 }.bind(this)
+/*点击增加*/
 addknow=function(event){
 	$(".knbox2").css("display","block")
+	/*获取要增加的位置*/
 	var id = event.target.parentElement.parentElement.firstElementChild.innerHTML
 	var index=null
 	if(id=="品牌网站"){
@@ -203,10 +217,14 @@ this.setState({
 })
 }.bind(this)
 kn2fo=function(){
+	/*点击取消  关闭增加弹窗*/
 	$(".knbox2").css("display","none")
 }
+/* 点击 增加确定按钮*/
 kn2fp=function(){
+	/*判断 数据是否完整*/
 	if($("#kndars").val()!=""&& this.refs.kn2img.files[0] != undefined){
+		//*把增加的数据传入后台*/
 			$.ajax({
 				type: "post",
 				url: conf.url+"/cebest/knowins",
@@ -215,6 +233,7 @@ kn2fp=function(){
 					"tit":$("#kndars").val()
 				},
 				success: function(e) {
+					/*更新并处理数据*/
 					this.setState({
 						know1:[],
 						know2:[],
@@ -264,6 +283,7 @@ entfn=function(event){
 		index:index
 	})
 }.bind(this)
+/* 点击标题修改*/
 knupfs=function(event){
 	console.log(this.state.index)
 	$(".knbox3").css("display","none")
@@ -275,6 +295,7 @@ knupfs=function(event){
 				"h2":$("#knfsts").val()
 				},
 				success: function(e) {
+					/*更新 并处理数据*/
 				this.setState({
 						know1:[],
 						know2:[],
@@ -309,6 +330,7 @@ knupfs=function(event){
 				}
 			});
 }.bind(this)
+/** 点击取消  关闭弹窗*/
 knclearzs=function(){
 	$(".knbox3").css("display","none")
 }

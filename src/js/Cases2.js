@@ -3,6 +3,7 @@ import $ from 'jquery';
 import conf from './../config';
 
 class Cases2 extends Component {
+	/*初始化状态*/
 	constructor() {
 		super();
 		this.state = {
@@ -13,6 +14,7 @@ class Cases2 extends Component {
 	componentDidMount() {
 
 		/*案例列表二*/
+		/* 初始化页面数据*/
 		$.ajax({
 			type: "get",
 			url: conf.url+"/cebest/alcases2",
@@ -28,8 +30,9 @@ class Cases2 extends Component {
 				console.log("失败了")
 			}
 		});
-
+/*点击上传按钮 */
 		$('#addsbtn2').click(function() {
+			/* 判断*/
 			if($("#text2").val() != "" && $("#text2s").val() != "" && this.refs.fils2.files[0] != undefined) {
 				$.ajax({
 					type: "post",
@@ -50,6 +53,8 @@ class Cases2 extends Component {
 								this.setState({
 									lis2: e
 								})
+										$("#text2").val("")
+		$("#text2s").val("")
 								console.log(this.state.lis2)
 							}.bind(this),
 							error: function() {
@@ -79,7 +84,7 @@ class Cases2 extends Component {
 		console.log(fd)
 		$.ajax({
 			type: "post",
-			url: conf.url+"/cebest/incases1",
+			url: conf.url+"/cebest/incases2a",
 			async: true,
 			data: fd,
 			contentType: false,
@@ -91,11 +96,13 @@ class Cases2 extends Component {
 		});
 		console.log(element.files[0])
 	}
+	/*删除*/
 	fn = function(event) {
-
+/*获取要删除的位置*/
 		var aa = event.target
 		var imgen = null
 		var cid = aa.parentElement.firstElementChild.innerHTML
+		/* 获取要删除的图片的路径*/
 		for(var i in this.state.lis2) {
 			if(this.state.lis2[i].cid == cid) {
 				imgen = this.state.lis2[i].img
@@ -130,15 +137,17 @@ class Cases2 extends Component {
 			}
 		});
 	}.bind(this);
-
+/* 点击修改   */
 	revisefn2 = function(event) {
 		$(".black2").css("display", "block")
+		/*获取要修改的id*/
 		var aa = event.target
 		var cid = aa.parentElement.firstElementChild.innerHTML
 		this.setState({
 			upes: cid
 		})
 	}.bind(this)
+	/* 点击确定  并渲染页面*/
 	confirmfn2 = function() {
 		$(".black2").css("display", "none")
 
@@ -159,6 +168,7 @@ class Cases2 extends Component {
 			}
 		});
 	}.bind(this)
+	/* 图片修改*/
 	upfns1 = function(event) {
 		$.ajax({
 			type: "post",
@@ -174,10 +184,11 @@ class Cases2 extends Component {
 			}
 		});
 	}.bind(this)
+	/*title1  修改*/
 	upfns2 = function(event) {
 		$.ajax({
 			type: "post",
-			url: conf.url+"/cebest/upscases2",
+			url: conf.url+"/cebest/casestext1",
 			data: {
 				"id": this.state.upes,
 				"title1": $("#huper1").val()
@@ -190,10 +201,11 @@ class Cases2 extends Component {
 			}
 		});
 	}.bind(this)
+	/*title2 修改*/
 	upfns3 = function(event) {
 		$.ajax({
 			type: "post",
-			url: conf.url+"/cebest/upscases3",
+			url: conf.url+"/cebest/casestext2",
 			data: {
 				"id": this.state.upes,
 				"title2": $("#huper2").val()

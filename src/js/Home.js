@@ -3,6 +3,7 @@ import $ from 'jquery';
 import conf from './../config';
 
 class Home extends Component {
+	/* 初始化状态*/
 	constructor() {
 		super();
 		this.state = {
@@ -11,6 +12,7 @@ class Home extends Component {
 		}
 	};
 		componentDidMount = function() {
+			/* 初始化页面数据*/
 			$.ajax({
 			type: "get",
 			url: conf.url+"/cebest/home",
@@ -37,6 +39,7 @@ homecr=function(event){
 homeqs=function(){
 	$(".homens").css("display","none")
 }
+/* 点击确定  传数据*/
 homeups=function(){
 		var tita = $("#homeatext").val()
 		var titEn=$("#homebtext").val()

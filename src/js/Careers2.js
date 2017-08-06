@@ -3,6 +3,7 @@ import $ from 'jquery';
 import conf from './../config';
 
 class Careers2 extends Component {
+	/*初始化数据*/
 	constructor() {
 		super();
 		this.state = {
@@ -14,6 +15,7 @@ class Careers2 extends Component {
 		}
 	};
 	componentDidMount = function() {
+		/*更新页面数据*/
 		$.ajax({
 			type: "get",
 			url: conf.url+"/cebest/careers2",
@@ -32,6 +34,7 @@ class Careers2 extends Component {
 			}
 		});
 	}
+	/*上传图片*/
 	setFiles = function(element) {
 		console.log(element)
 		var files = []
@@ -48,7 +51,7 @@ class Careers2 extends Component {
 			contentType: false,
 			processData: false,
 			success: function(e) {
-
+				/*修改图片*/
 				$.ajax({
 					type: "post",
 					url: conf.url+"/cebest/upcareers2img",
@@ -68,22 +71,26 @@ class Careers2 extends Component {
 			}
 		})
 	}.bind(this)
-
+/*点击修改 弹出框*/
 	faser = function(event) {
 		$(".car2fix").css("display", "block")
 		var aa = event.target
 		var id = aa.parentElement.firstElementChild.innerHTML
+		/* 获取修改的id*/
 		this.setState({
 			id: id
 		})
 	}.bind(this)
+	/*点击取消*/
 	clearfn = function() {
 		$(".car2fix").css("display", "none")
 	}
+	/* 点击确定*/
 	carups = function() {
 		var title1 = $("#title1").val()
 		var title2 = $("#title2").val()
 		var con = $("#con").val()
+		/* 判断 每个字段 是否被修改*/
 		if($("#title1").val() == "") {
 			for(var i = 0; i < this.state.careers2.length; i++) {
 				if(this.state.careers2[i].id == this.state.id) {
@@ -106,6 +113,7 @@ class Careers2 extends Component {
 				}
 			}
 		}
+		/* 向后台传数据*/
 		$.ajax({
 			type: "post",
 			url: conf.url+"/cebest/upcareers2",
@@ -116,6 +124,7 @@ class Careers2 extends Component {
 				"con": con
 			},
 			success: function(e) {
+				/* 更新 修改页面数据*/
 				this.setState({
 					careers2: e
 				})
